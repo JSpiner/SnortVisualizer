@@ -6,7 +6,7 @@ using System.Text;
 namespace WindowsFormsApplication4.Model
 {
 
-    class RuleHeader
+    public class RuleHeader
     {
         public enum ACTION { ALERT, LOG, PASS, ACTIVATE, DYNAMIC };
         public enum PROTOCOL { TCP, UDP, ICMP, IP };
@@ -14,11 +14,11 @@ namespace WindowsFormsApplication4.Model
         public String raw;
         public ACTION ruleAction;
         public PROTOCOL ruleProtocol;
-        public String ruleSenderip;
-        public String ruleSenderport;
+        public String senderIp;
+        public String senderPort;
         public String ruleDirect;
-        public String ruleReceiveip;
-        public String ruleReceiveport;
+        public String receiveIp;
+        public String receivePort;
 
         public RuleHeader(String header)
         {
@@ -48,19 +48,19 @@ namespace WindowsFormsApplication4.Model
             this.ruleProtocol = parseProtocol;
 
             //rule Senderip
-            this.ruleSenderip = headers[2];
+            this.senderIp = headers[2];
 
             //rule Senderport
-            this.ruleSenderport = headers[3];
+            this.senderPort = headers[3];
 
             //rule Direct
             this.ruleDirect = headers[4];
 
             //rule Receiveip
-            this.ruleReceiveip = headers[5];
+            this.receiveIp = headers[5];
 
             //rule Receiveport
-            this.ruleReceiveport = headers[6];
+            this.receivePort = headers[6];
 
 
         }

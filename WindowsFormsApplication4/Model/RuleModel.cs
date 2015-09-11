@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WindowsFormsApplication4.Model
 {
-    class RuleModel
+    public class RuleModel
     {
         public String raw;
         public RuleHeader ruleHeader;
