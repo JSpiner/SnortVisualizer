@@ -6,7 +6,6 @@ using System.Text.RegularExpressions;
 
 namespace WindowsFormsApplication4.Model
 {
-
     public class LogHeader
     {
         public String raw;
@@ -110,4 +109,6 @@ namespace WindowsFormsApplication4.Model
             }
         }
     }
+
+
 }

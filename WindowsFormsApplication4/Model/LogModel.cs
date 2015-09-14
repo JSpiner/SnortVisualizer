@@ -5,6 +5,7 @@ using System.Text;
 
 namespace WindowsFormsApplication4.Model
 {
+
     public class LogModel
     {
         public String raw;
@@ -25,12 +26,11 @@ namespace WindowsFormsApplication4.Model
             {
                 if (line.Trim().StartsWith("["))
                 {
-                    headBuilder.Append(line);
+                    headBuilder.AppendLine(line);
                 }
                 else
                 {
-                    bodyBuilder.Append(line);
-
+                    bodyBuilder.AppendLine(line);
                 }
             }
 
