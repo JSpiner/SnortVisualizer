@@ -100,7 +100,7 @@ namespace WindowsFormsApplication4.Model
                 //inteface
                 int ifIndex = sig.IndexOf(">"); //inteface index
                 this.alertInterface = sig.Substring(
-                    sigIndex + 1, ifIndex - sigIndex - 1).Trim();
+                    sigIndex + 1, ifIndex - sigIndex).Trim();
 
                 //msg
                 this.alertMsg = sig.Substring(ifIndex + 1).Trim();

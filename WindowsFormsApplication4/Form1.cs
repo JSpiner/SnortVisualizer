@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using WindowsFormsApplication4.Model;
+using MaterialSkin.Controls;
+using MaterialSkin;
 
 namespace WindowsFormsApplication4
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MaterialForm
     {
 
 
@@ -35,11 +37,17 @@ namespace WindowsFormsApplication4
         public Form1()
         {
             InitializeComponent();
+
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-
             foreach (String rule in rules)
             {
                 RuleModel ruleModel = RuleModel.parse(rule);

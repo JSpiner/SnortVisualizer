@@ -103,11 +103,11 @@ namespace WindowsFormsApplication4.Model
                     break;
             }
 
-            TTL = Convert.ToInt32(getKey(headers[1]));
-            TOS = getKey(headers[2]);
-            ID = Convert.ToInt32(getKey(headers[3]));
-            IpLen = Convert.ToInt32(getKey(headers[4]));
-            DgmLen = Convert.ToInt32(getKey(headers[5]));
+            TTL = Convert.ToInt32(getValue(headers[1]));
+            TOS = getValue(headers[2]);
+            ID = Convert.ToInt32(getValue(headers[3]));
+            IpLen = Convert.ToInt32(getValue(headers[4]));
+            DgmLen = Convert.ToInt32(getValue(headers[5]));
 
 
         }
@@ -152,10 +152,10 @@ namespace WindowsFormsApplication4.Model
             protocolBody.raw = lines[2];
         }
 
-        private String getKey(String pair)
+        private String getValue(String pair)
         {
             int index = pair.IndexOf(":");
-            String key = pair.Substring(0, index);
+            //			String key = pair.Substring (0, index);
             String value = pair.Substring(index + 1);
             return value;
         }
@@ -231,16 +231,16 @@ namespace WindowsFormsApplication4.Model
 
             public ICMP(String[] seps)
             {
-                this.Type = Convert.ToInt32(getKey(seps[0]));
-                this.Code = Convert.ToInt32(getKey(seps[2]));
-                this.ID = Convert.ToInt32(getKey(seps[4]));
-                this.Seq = Convert.ToInt32(getKey(seps[7]));
+                this.Type = Convert.ToInt32(getValue(seps[0]));
+                this.Code = Convert.ToInt32(getValue(seps[2]));
+                this.ID = Convert.ToInt32(getValue(seps[4]));
+                this.Seq = Convert.ToInt32(getValue(seps[7]));
             }
 
-            private String getKey(String pair)
+            private String getValue(String pair)
             {
                 int index = pair.IndexOf(":");
-                String key = pair.Substring(0, index);
+                //				String key = pair.Substring (0, index);
                 String value = pair.Substring(index + 1);
                 return value;
             }
