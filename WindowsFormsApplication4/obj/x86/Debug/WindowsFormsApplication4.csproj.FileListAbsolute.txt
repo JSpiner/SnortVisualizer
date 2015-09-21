@@ -8,3 +8,4 @@ c:\users\jspiner\documents\visual studio 2010\Projects\WindowsFormsApplication4\
 C:\Users\JSpiner\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Debug\MaterialSkin.dll
 C:\Users\JSpiner\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Debug\MaterialSkin.pdb
 C:\Users\JSpiner\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Debug\WindowsFormsApplication4.csprojResolveAssemblyReference.cache
+C:\Users\JSpiner\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Debug\WindowsFormsApplication4.MainForm.resources

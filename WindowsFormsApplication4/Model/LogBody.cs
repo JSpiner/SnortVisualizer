@@ -68,11 +68,11 @@ namespace WindowsFormsApplication4.Model
     public class IPHeader
     {
 
-        enum PROTOCOL { TCP, UDP, ICMP };
-        enum IPFLAG { RB, DF, MF };
+        public enum PROTOCOL { TCP, UDP, ICMP };
+        public enum IPFLAG { RB, DF, MF };
 
-        PROTOCOL protocol;
-        IPFLAG flag;
+        public PROTOCOL protocol;
+        public IPFLAG flag;
 
         public int TTL;
         public String TOS;
