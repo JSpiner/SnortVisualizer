@@ -44,9 +44,11 @@ namespace WindowsFormsApplication4
 
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme =// new ColorScheme(Primary.Indigo500, Primary.Indigo700, Primary.Indigo100, Accent.Pink200, TextShade.WHITE);
+            new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -64,7 +66,9 @@ namespace WindowsFormsApplication4
 //            MakeTransparentControls(listView1);
 //            listView1.BackColor = Color.Transparent;
 //            listView1.ForeColor = Color.Transparent;
-            listView1.BackColor = Color.FromArgb(51, 51, 51);
+           
+            
+            //listView1.BackColor = Color.FromArgb(51, 51, 51);
 //            listView1.Items[0].BackColor = Color.Red;
 
             listView1.Columns[0].Width = 50;

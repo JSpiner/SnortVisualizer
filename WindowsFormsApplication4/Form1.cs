@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using WindowsFormsApplication4.Model;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using System.Net.Sockets;
+using System.Net;
 
 namespace WindowsFormsApplication4
 {
@@ -65,6 +67,70 @@ namespace WindowsFormsApplication4
             {
                 RuleModel rule = RuleModel.parse(line);
             }*/
+        }
+
+        private void materialFlatButton2_Click(object sender, EventArgs e)
+        {
+
+//            IPHostEntry ipHost = Dns.Resolve("localhost");
+//            IPAddress ipAddr = IPAddress.Parse("192.168.1.1");
+            IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, 50000);
+
+            // create a Tcp/Ip Socket
+            Socket sListener = new Socket(AddressFamily.InterNetwork,
+                        SocketType.Stream, ProtocolType.Tcp);
+
+
+            // bind the socket to the local endpoint and
+            // listen to the incoming sockets
+
+            try
+            {
+                sListener.Bind(ipEndPoint);
+                sListener.Listen(10);
+
+                // Start listening for connections
+
+                while (true)
+                {
+                    Console.WriteLine("Waiting for a connection on port {0}", ipEndPoint);
+
+                    // program is suspended while waiting for an incoming connection
+                    Socket handler = sListener.Accept();
+
+                    string data = null;
+
+                    // we got the client attempting to connect
+                    while (true)
+                    {
+                        byte[] bytes = new byte[1024];
+
+                        int bytesRec = handler.Receive(bytes);
+
+                        data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                        MessageBox.Show("received");
+                        if (data.IndexOf("}") != -1)
+                        {
+                            break;
+                        }
+                    }
+
+                    // show the data on the console
+                    Console.WriteLine("Text Received: {0}", data);
+                    string theReply = "Thank you for those " + data.Length.ToString()
+                                    + " characters...";
+                    byte[] msg = Encoding.ASCII.GetBytes(theReply);
+
+                    handler.Send(msg);
+                    handler.Shutdown(SocketShutdown.Both);
+                    handler.Close();
+                }
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err.ToString());
+            }
+
         }
         
     }

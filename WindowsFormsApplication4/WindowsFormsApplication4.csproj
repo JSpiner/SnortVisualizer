@@ -64,6 +64,7 @@
     <Compile Include="Model\RuleHeader.cs" />
     <Compile Include="Model\RuleModel.cs" />
     <Compile Include="Model\RuleOption.cs" />
+    <Compile Include="PHostEntry.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerialTest.cs" />
