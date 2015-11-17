@@ -9,14 +9,12 @@ using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
 using WindowsFormsApplication4.Model;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace WindowsFormsApplication4
 {
     public partial class MainForm : MaterialForm
     {
-
-
-
         public static String[] rules = {
 			"alert tcp 192.168.1.35 any -> any any (msg:\"Traffic from 192.168.1.35\";)",
 			"alert tcp any any -> any any (msg:\"Possible  exploit\"; content:\"|90|\";)",
@@ -34,6 +32,8 @@ namespace WindowsFormsApplication4
 			"[**] [1:978:7]  <\\Device\\NPF_{416E2ED0-46A1-4868-957A-E0811C91C17D}> Rule 7 WEB-IIS ASP contents view [**]\n[Classification: Web Application Attack] [Priority: 1] \n03/04-21:24:38.344937 137.207.234.252:13873 -> 172.16.1.2:80\nTCP TTL:128 TOS:0x0 ID:0 IpLen:20 DgmLen:88 DF\n***A**** Seq: 0xE6475973  Ack: 0x6158E1E9  Win: 0x4000  TcpLen: 20\n[Xref => http://www.securityfocus.com/bid/1084][Xref => http://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2000-0302]"
 
 		};
+
+        public List<LogModel> logList;
 
         public MainForm()
         {
@@ -63,13 +63,6 @@ namespace WindowsFormsApplication4
 
         private void init()
         {
-//            MakeTransparentControls(listView1);
-//            listView1.BackColor = Color.Transparent;
-//            listView1.ForeColor = Color.Transparent;
-           
-            
-            //listView1.BackColor = Color.FromArgb(51, 51, 51);
-//            listView1.Items[0].BackColor = Color.Red;
 
             listView1.Columns[0].Width = 50;
             listView1.Columns[1].Width = 80;
@@ -78,9 +71,13 @@ namespace WindowsFormsApplication4
             listView1.Columns[4].Width = 300;
 
 
+            Panel  p = panel1;
+           
+                  
             foreach (String log in logs)
             {
                 LogModel model = LogModel.parse(log);
+                this.logList.Add(model);
                 String[] datas = {
                                         "log",
                                         model.logBody.ipHeader.protocol.ToString(),
@@ -94,17 +91,123 @@ namespace WindowsFormsApplication4
                     if (item == null)
                     {
                         item = new ListViewItem(data);
-                        item.ForeColor = Color.FromArgb(226, 228, 229);
                     }
                     else
                     {
                         item.SubItems.Add(data);
                     }
+
                 }
+                
 
                 listView1.Items.Add(item);
 
             }
+
+            for (int i = 0; i < 20; i++)
+            {
+                Label label = new Label();
+                label.Text = "asdfasdf";
+                p.Controls.Add(label);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            chart1.Series.Clear();
+            int[] intValue = { 1,2,3,4,5,6,7,8,9 };
+            String[] stringValue = { "a", "b", "c", "d", "e", "f", "g", "h", "i" };
+
+            Series series = new Series();
+            series.ChartType = SeriesChartType.Column;
+;
+
+            series.Name = (stringValue[0]);
+            for (int i = 0; i < 9; i++)
+            {
+                series.Points.Add(intValue[i]);
+
+               
+            }
+            chart1.Series.Add(series);
+
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            materialTabSelector1.Size = new Size(Width, materialTabSelector1.Size.Height);
+            tabPage1.Size = new Size(Width, Height);
+            tabPage2.Size = new Size(Width, Height);
+            tabPage3.Size = new Size(Width, Height);
+            listView1.Size = new Size(Width-100, Height-100);
+        }
+
+        private void materialFlatButton1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://192.168.0.2");
+        }
+
+        private void analysis()
+        {
+
+
+            List<AnalData> ipList = new List<AnalData>();
+            List<AnalData> portList = new List<AnalData>();
+            List<AnalData> dateList = new List<AnalData>();
+
+            foreach (LogModel model in logList)
+            {
+
+                Boolean sw = false;
+                foreach (AnalData data in ipList)
+                {
+                    if (data.name == model.logBody.receiverIp)
+                    {
+                        sw = true;
+                        data.count++;
+                        break;
+                    }
+                }
+                if (!sw)
+                {
+                    AnalData tmp = new AnalData();
+                    tmp.name = model.logBody.receiverIp;
+                    ipList.Add(tmp);
+                }
+
+                sw = false;
+                foreach (AnalData data in ipList)
+                {
+                    if (data.name == model.logBody.receiverPort)
+                    {
+                        sw = true;
+                        data.count++;
+                        break;
+                    }
+                }
+                if (!sw)
+                {
+                    AnalData tmp = new AnalData();
+                    tmp.name = model.logBody.receiverPort;
+                    portList.Add(tmp);
+                }
+
+            }
+
+
+        }
+
+        class AnalData
+        {
+            public String name;
+            public int count;
         }
     }
 }

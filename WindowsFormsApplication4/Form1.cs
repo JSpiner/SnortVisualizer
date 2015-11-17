@@ -72,9 +72,10 @@ namespace WindowsFormsApplication4
         private void materialFlatButton2_Click(object sender, EventArgs e)
         {
 
-//            IPHostEntry ipHost = Dns.Resolve("localhost");
-//            IPAddress ipAddr = IPAddress.Parse("192.168.1.1");
-            IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, 50000);
+            //IPHostEntry ipHost = Dns.Resolve("localhost");
+            //IPAddress ipAddr = IPAddress.Parse("192.168.1.1");
+            IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, 11000);
+
 
             // create a Tcp/Ip Socket
             Socket sListener = new Socket(AddressFamily.InterNetwork,
@@ -108,7 +109,7 @@ namespace WindowsFormsApplication4
                         int bytesRec = handler.Receive(bytes);
 
                         data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
-                        MessageBox.Show("received");
+//                        MessageBox.Show("received");
                         if (data.IndexOf("}") != -1)
                         {
                             break;
