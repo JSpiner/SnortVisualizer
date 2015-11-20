@@ -1,0 +1,16 @@
+﻿<Properties StartupItem="WindowsFormsApplication4/WindowsFormsApplication4.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="WindowsFormsApplication4/Form1.Designer.cs">
+    <Files>
+      <File FileName="WindowsFormsApplication4/Form1.cs" Line="46" Column="3" />
+      <File FileName="WindowsFormsApplication4/MainForm.cs" Line="14" Column="34" />
+      <File FileName="WindowsFormsApplication4/Form1.Designer.cs" Line="14" Column="9" />
+      <File FileName="WindowsFormsApplication4/MainForm.Designer.cs" Line="482" Column="8" />
+      <File FileName="WindowsFormsApplication4/SettingControl.Designer.cs" Line="95" Column="7" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

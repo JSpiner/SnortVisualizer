@@ -5,6 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Net.Sockets;
+using System.Threading;
+using System.Net;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
@@ -15,6 +18,7 @@ namespace WindowsFormsApplication4
 {
     public partial class MainForm : MaterialForm
     {
+		
         public static String[] rules = {
 			"alert tcp 192.168.1.35 any -> any any (msg:\"Traffic from 192.168.1.35\";)",
 			"alert tcp any any -> any any (msg:\"Possible  exploit\"; content:\"|90|\";)",
@@ -73,7 +77,7 @@ namespace WindowsFormsApplication4
 
             Panel  p = panel1;
            
-                  
+            /*      
             foreach (String log in logs)
             {
                 LogModel model = LogModel.parse(log);
@@ -98,11 +102,14 @@ namespace WindowsFormsApplication4
                     }
 
                 }
-                
+
+
+				
 
                 listView1.Items.Add(item);
 
             }
+*/
 
             for (int i = 0; i < 20; i++)
             {
@@ -110,7 +117,132 @@ namespace WindowsFormsApplication4
                 label.Text = "asdfasdf";
                 p.Controls.Add(label);
             }
+
+			Thread initThread = new Thread(initSocket);
+			initThread.Start();
+
         }
+
+		Socket sender;
+
+		void receiveData(){
+
+			StringBuilder builder = new StringBuilder ();
+
+			while (true) {
+
+
+				byte[] bytes = new byte[1024];
+
+
+				int bytesRec = sender.Receive(bytes);
+
+				if (bytesRec != 0) {
+					Console.WriteLine ("Receive : {0} {1}",
+						Encoding.ASCII.GetString (bytes, 0,bytesRec),
+						bytesRec);
+					String result = Encoding.ASCII.GetString (bytes, 0, bytesRec);
+					builder.Append (result);
+
+					if (result.IndexOf ("}") != -1) {
+						procData (builder.ToString ());
+						builder.Clear ();
+					}
+				}
+			}
+		}
+
+		void procData(String str){
+
+			try{
+				JEParser parser = JEParser.getInstance (typeof(SocketModel));
+				SocketModel obj = (SocketModel) parser.parse (str);
+
+				switch (str) {
+				case 1:
+
+					String[] logs = base64Decode(obj.raw).Split(new[] { "\n" }, StringSplitOptions.None);
+
+					foreach (String log in logs)
+					{
+						LogModel model = LogModel.parse(log);
+						this.logList.Add(model);
+						String[] datas = {
+							"log",
+							model.logBody.ipHeader.protocol.ToString(),
+							model.logBody.senderIp,
+							model.logBody.receiverIp,
+							model.logHeader.alertSig.alertMsg};
+
+						ListViewItem item=null;
+						foreach (String data in datas)
+						{
+							if (item == null)
+							{
+								item = new ListViewItem(data);
+							}
+							else
+							{
+								item.SubItems.Add(data);
+							}
+
+						}
+
+						listView1.Items.Add(item);
+
+					}
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 5:
+					break;
+
+				}
+			}catch(Exception e){
+				sendMessage ("{\"type\":3, \"msg\":\"error\"");
+			}
+		}
+			
+		void sendMessage(String str){
+
+			byte[] msg = Encoding.ASCII.GetBytes(str);
+
+			int bytesSent = sender.Send(msg);
+			Console.WriteLine ("send data {0}",bytesSent);
+
+		}
+
+		String base64Decode(String str){
+			Encoding encoding = System.Text.Encoding.UTF8;
+			return encoding.GetString(System.Convert.FromBase64String (str));
+		}
+
+		void initSocket(){
+
+			String ip = "192.168.1.1";
+			String port = "9999";
+
+
+			IPHostEntry ipHost = Dns.Resolve(ip);
+			IPAddress ipAddr = ipHost.AddressList[0];
+			IPEndPoint ipEndPoint = new IPEndPoint(ipAddr, Convert.ToInt32(port));
+
+
+			Console.WriteLine("Try to connect {0}", (ip+":"+port));
+			sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+			sender.Connect(ipEndPoint);
+
+			Console.WriteLine("Socket connected to {0}", sender.RemoteEndPoint.ToString());
+
+
+			receiveData();
+
+		}
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -120,7 +252,6 @@ namespace WindowsFormsApplication4
 
             Series series = new Series();
             series.ChartType = SeriesChartType.Column;
-;
 
             series.Name = (stringValue[0]);
             for (int i = 0; i < 9; i++)
@@ -155,8 +286,7 @@ namespace WindowsFormsApplication4
         }
 
         private void analysis()
-        {
-
+		{
 
             List<AnalData> ipList = new List<AnalData>();
             List<AnalData> portList = new List<AnalData>();
