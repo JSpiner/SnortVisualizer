@@ -33,9 +33,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -114,12 +111,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Downloads\MaterialSkin-master\MaterialSkin-master\MaterialSkin\MaterialSkin.csproj">
-      <Project>{8EB7611B-68CD-4B8B-987A-11717E2B250C}</Project>
-      <Name>MaterialSkin</Name>
-    </ProjectReference>
+    <Compile Include="Model\JEParser.cs" />
+    <Compile Include="Model\SocketModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

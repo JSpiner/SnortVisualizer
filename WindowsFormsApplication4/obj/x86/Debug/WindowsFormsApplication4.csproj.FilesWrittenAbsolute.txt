@@ -1,0 +1,7 @@
+/Users/JSpiner/Documents/CSharp/SnortVisualizer/WindowsFormsApplication4/obj/x86/Debug/.NETFramework,Version=v4.0,Profile=Client.AssemblyAttribute.cs
+/Users/JSpiner/Documents/CSharp/SnortVisualizer/WindowsFormsApplication4/obj/x86/Debug/WindowsFormsApplication4.Form1.resources
+/Users/JSpiner/Documents/CSharp/SnortVisualizer/WindowsFormsApplication4/obj/x86/Debug/WindowsFormsApplication4.Form2.resources
+/Users/JSpiner/Documents/CSharp/SnortVisualizer/WindowsFormsApplication4/obj/x86/Debug/WindowsFormsApplication4.MainForm.resources
+/Users/JSpiner/Documents/CSharp/SnortVisualizer/WindowsFormsApplication4/obj/x86/Debug/WindowsFormsApplication4.Properties.Resources.resources
+/Users/JSpiner/Documents/CSharp/SnortVisualizer/WindowsFormsApplication4/obj/x86/Debug/WindowsFormsApplication4.SettingControl.resources
+/Users/JSpiner/Documents/CSharp/SnortVisualizer/WindowsFormsApplication4/obj/x86/Debug/WindowsFormsApplication4.exe
