@@ -46,10 +46,10 @@ namespace WindowsFormsApplication4
 				case "System.Double":
 					value = Convert.ToDouble (oValue);
 					break;
-				case "System.Int32":
+				case "Int32":
 					value = Convert.ToInt32 (oValue);
 					break;
-				case "System.Int64":
+				case "Int64":
 					value = Convert.ToInt64 (oValue);
 					break;
 				case "System.Boolean":
