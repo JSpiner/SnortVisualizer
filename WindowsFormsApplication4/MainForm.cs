@@ -63,9 +63,9 @@ namespace WindowsFormsApplication4
             String str = "{ \"type\": 1, \"raw\": \"[**] [129:12:1] Consecutive TCP small segments exceeding threshold [**]\n[Classification: Potentially Bad Traffic] [Priority: 2]\n10/23-19:52:55.930599 192.168.1.1:22 -> 192.168.1.2:56691\nTCP TTL:64 TOS:0x10 ID:9212 IpLen:20 DgmLen:180 DF\n***AP*** Seq: 0x7A1D4034  Ack: 0x8FD860F4  Win: 0x389  TcpLen: 32\nTCP Options (3) => NOP NOP TS: 4294963982 84292532\" }";
 
             init();
-
 //            SerialTest t = new SerialTest();
         }
+
 
         private void init()
         {
@@ -159,6 +159,13 @@ namespace WindowsFormsApplication4
             }
         }
 
+        delegate void DelegateFunction(ListViewItem item);
+
+        void addItem(ListViewItem item)
+        {
+            listView1.Items.Add(item);
+        }
+
         void procData(String str)
         {
 
@@ -197,8 +204,8 @@ namespace WindowsFormsApplication4
                             }
 
                         }
-
-                        listView1.Items.Add(item);
+                        listView1.Invoke(new DelegateFunction(addItem), new object[] { item});
+//                        listView1.Items.Add(item);
 
                         //}
                         break;
