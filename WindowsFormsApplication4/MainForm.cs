@@ -183,7 +183,7 @@ namespace WindowsFormsApplication4
                 }
 
                 sw = false;
-                foreach (AnalData data in ipList)
+                foreach (AnalData data in portList)
                 {
                     if (data.name == model.logBody.receiverPort)
                     {
@@ -197,6 +197,12 @@ namespace WindowsFormsApplication4
                     AnalData tmp = new AnalData();
                     tmp.name = model.logBody.receiverPort;
                     portList.Add(tmp);
+                }
+
+                sw = false;
+                foreach (AnalData data in dateList)
+                {
+
                 }
 
             }
