@@ -25,7 +25,7 @@ namespace WindowsFormsApplication4.Model
             String[] lines = body.Split(new[] { "\n" }, StringSplitOptions.None);
 
             //line1 : time & ip sender receiver
-            String[] seps = lines[0].Split(new[] { " " }, StringSplitOptions.None);
+            String[] seps = lines[0].Trim().Split(new[] { " " }, StringSplitOptions.None);
 
             this.time = DateTime.ParseExact(seps[0],
                 "MM/dd-HH:mm:ss.ffffff",
@@ -46,8 +46,8 @@ namespace WindowsFormsApplication4.Model
             int receiveIndex = seps[3].IndexOf(":");
             if (receiveIndex == -1)
             {
-                senderIp = seps[3];
-                senderPort = "";
+                receiverIp = seps[3];
+                receiverPort = "";
             }
             else
             {
@@ -56,7 +56,7 @@ namespace WindowsFormsApplication4.Model
             }
 
             //line2 : protocol type -> ip header
-            String[] pheaders = lines[1].Split(new[] { " " }, StringSplitOptions.None);
+            String[] pheaders = lines[1].Trim().Split(new[] { " " }, StringSplitOptions.None);
 
             ipHeader = new IPHeader(pheaders);
             ipHeader.parseLine(lines);

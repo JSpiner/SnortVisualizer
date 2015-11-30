@@ -60,9 +60,9 @@ namespace WindowsFormsApplication4
             Thread initThread = new Thread(initSocket);
             initThread.Start();
 
-            String str = "{ \"type\": 1, \"raw\": \"[**] [129:12:1] Consecutive TCP small segments exceeding threshold [**]\n[Classification: Potentially Bad Traffic] [Priority: 2]\n10/23-19:52:55.930599 192.168.1.1:22 -> 192.168.1.2:56691\nTCP TTL:64 TOS:0x10 ID:9212 IpLen:20 DgmLen:180 DF\n***AP*** Seq: 0x7A1D4034  Ack: 0x8FD860F4  Win: 0x389  TcpLen: 32\nTCP Options (3) => NOP NOP TS: 4294963982 84292532\" }";
-
+            String str = "{ \"type\": 1, \"raw\": \"[**] [1:5:0] icmp in packet!! [**] \n[Priority: 0]\n 10/23-19:52:59.979665 192.168.1.2 -> 192.168.1.1 \n ICMP TTL:64 TOS:0x0 ID:60363 IpLen:20 DgmLen:84 DF\nType:8  Code:0  ID:23811   Seq:2  ECHO \" }";
             init();
+            procData(str);
 //            SerialTest t = new SerialTest();
         }
 
@@ -80,6 +80,13 @@ namespace WindowsFormsApplication4
             Panel p = panel1;
 
             logList = new List<LogModel>();
+
+            foreach (String log in logs)
+            {
+                LogModel model = LogModel.parse(log);
+                this.logList.Add(model);
+
+            }
 
             /*      
             foreach (String log in logs)
@@ -256,12 +263,21 @@ namespace WindowsFormsApplication4
 
 
             Console.WriteLine("Try to connect {0}", (ip + ":" + port));
-            sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-            sender.Connect(ipEndPoint);
+            try
+            {
+                sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-            Console.WriteLine("Socket connected to {0}", sender.RemoteEndPoint.ToString());
+                sender.Connect(ipEndPoint);
 
+                Console.WriteLine("Socket connected to {0}", sender.RemoteEndPoint.ToString());
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("error : " + err.Message);
+                initSocket();
+                return;
+            }
 
             receiveData();
 
@@ -269,22 +285,7 @@ namespace WindowsFormsApplication4
 
         private void button1_Click(object sender, EventArgs e)
         {
-            chart1.Series.Clear();
-            int[] intValue = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            String[] stringValue = { "a", "b", "c", "d", "e", "f", "g", "h", "i" };
-
-            Series series = new Series();
-            series.ChartType = SeriesChartType.Column;
-
-            series.Name = (stringValue[0]);
-            for (int i = 0; i < 9; i++)
-            {
-                series.Points.Add(intValue[i]);
-
-
-            }
-            chart1.Series.Add(series);
-
+            analysis();
 
         }
 
@@ -355,7 +356,69 @@ namespace WindowsFormsApplication4
             }
 
 
+            initIPChart(ipList);
+            initPortChart(portList);
+            initDateList(dateList);
         }
+
+        void initIPChart(List<AnalData> ipList)
+        {
+
+            chart1.Series.Clear();
+
+            Series series = new Series();
+            series.ChartType = SeriesChartType.Line;
+
+            series.Name = "ipList";
+            for (int i = 0; i < 9; i++)
+            {
+                if (i >= ipList.Count) break;
+                series.Points.Add(ipList[i].count);
+                series.Points.Add(ipList[i].count);
+            }
+            chart1.Series.Add(series);
+//            chart2.Series.Add(series);
+//            chart3.Series.Add(series);
+
+        }
+
+        void initPortChart(List<AnalData> portList)
+        {
+
+            chart2.Series.Clear();
+
+            Series series = new Series();
+            series.ChartType = SeriesChartType.Line;
+
+            series.Name = "portList";
+            for (int i = 0; i < 9; i++)
+            {
+                if (i >= portList.Count) break;
+                series.Points.Add(portList[i].count);
+                series.Points.Add(portList[i].count);
+            }
+            chart2.Series.Add(series);
+
+        }
+
+        void initDateList(List<AnalData> dateList)
+        {
+
+            chart3.Series.Clear();
+
+            Series series = new Series();
+            series.ChartType = SeriesChartType.Line;
+
+            series.Name = "dateList";
+            for (int i = 0; i < 9; i++)
+            {
+                if (i >= dateList.Count) break;
+                series.Points.Add(dateList[i].count);
+                series.Points.Add(dateList[i].count);
+            }
+            chart3.Series.Add(series);
+
+        } 
 
         class AnalData
         {
