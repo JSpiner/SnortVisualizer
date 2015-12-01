@@ -13,6 +13,7 @@ using MaterialSkin.Controls;
 using MaterialSkin;
 using WindowsFormsApplication4.Model;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Net.Json;
 
 namespace WindowsFormsApplication4
 {
@@ -234,14 +235,31 @@ namespace WindowsFormsApplication4
             }
         }
 
-        void sendMessage(String str)
+        public void sendMessage(int type, String str)
         {
+            JsonObjectCollection res = new JsonObjectCollection();
+            res.Add(new JsonStringValue("type", type.ToString()));
+            res.Add(new JsonStringValue("raw", str));
+            byte[] msg = Encoding.ASCII.GetBytes(res.ToString());
 
-            byte[] msg = Encoding.ASCII.GetBytes(str);
 
+            MessageBox.Show(str);
+
+            switch (type)
+            {
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+            }
             int bytesSent = sender.Send(msg);
             Console.WriteLine("send data {0}", bytesSent);
-
         }
 
         String base64Decode(String str)
@@ -425,5 +443,110 @@ namespace WindowsFormsApplication4
             public String name;
             public int count;
         }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            this.button11.Visible = true;
+            this.button12.Visible = false;
+
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            this.button13.Visible = true;
+            this.button14.Visible = false;
+
+            Home_net.ReadOnly = false;
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            this.button15.Visible = true;
+            this.button16.Visible = false;
+
+            Rule_dir.ReadOnly = false;
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            this.button17.Visible = true;
+            this.button18.Visible = false;
+
+            Max_tcp.ReadOnly = false;
+            Max_udp.ReadOnly = false;
+        }
+
+
+
+
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            this.button12.Visible = true;
+            this.button11.Visible = false;
+
+            String item = (String)Interface.SelectedItem;
+            sendMessage(3, item);
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            this.button14.Visible = true;
+            this.button13.Visible = false;
+
+            String item = "uci set snort.home.HOME_NET=" + Home_net.Text;
+            sendMessage(3, item);
+            Home_net.ReadOnly = true;
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            this.button16.Visible = true;
+            this.button15.Visible = false;
+
+            String item = "uci set snort.home.RULE_DIR=" + Rule_dir.Text;
+            sendMessage(3, item);
+            Rule_dir.ReadOnly = true;
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            this.button18.Visible = true;
+            this.button17.Visible = false;
+
+            String item = "uci set snort.preprocessors.stream5_global=':max_tcp " + Max_tcp.Text + ", max_udp " + Max_udp.Text + "'";
+            sendMessage(3, item);
+            Max_tcp.ReadOnly = true;
+            Max_udp.ReadOnly = true;
+        }
+
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+
+
+        private void rule_add_bt_Click(object sender, EventArgs e)
+        {
+            Ruleedit rule_edit = new Ruleedit();
+            rule_edit.main = this;
+            rule_edit.listview = this.Rule_listView;
+            rule_edit.Show();
+        }
+
+        private void Snort_button_Click(object sender, EventArgs e)
+        {
+            //String str = "/etc/init.d/snort restart";
+            //sendMessage(2, str);
+            fw_Log fwlog = new fw_Log("Nov 28 17:13:01 OpenWrt [  812.000000] Black_List Deny : IN=br-lan OUT= MAC=01:00:5e:00:00:01:4c:5e:0c:39:42:63:08:00 SRC=0.0.0.0 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0xC0 TTL=1 ID=0 DF PROTO=2");
+            MessageBox.Show("sip:" + fwlog.Src_ip + " dip:" + fwlog.Dest_ip);
+            ListViewItem item = new ListViewItem(fwlog.Src_ip);
+            item.SubItems.Add(fwlog.Dest_ip);
+            item.SubItems.Add(fwlog.raw);
+            fw_log_listview.Items.Add(item);
+        }
+
     }
 }

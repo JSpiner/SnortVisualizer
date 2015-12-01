@@ -64,6 +64,46 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.Snort_button = new System.Windows.Forms.PictureBox();
+            this.rule_add_bt = new System.Windows.Forms.Button();
+            this.Rule_listView = new System.Windows.Forms.ListView();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Max_panel = new System.Windows.Forms.Panel();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.Max_udp_label = new System.Windows.Forms.Label();
+            this.Max_udp = new System.Windows.Forms.TextBox();
+            this.Max_tcp_label = new System.Windows.Forms.Label();
+            this.Max_tcp = new System.Windows.Forms.TextBox();
+            this.Rule_dir_panel = new System.Windows.Forms.Panel();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.Rule_dir_label = new System.Windows.Forms.Label();
+            this.Rule_dir = new System.Windows.Forms.TextBox();
+            this.Home_net_panel = new System.Windows.Forms.Panel();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.Home_net_label = new System.Windows.Forms.Label();
+            this.Home_net = new System.Windows.Forms.TextBox();
+            this.Interface_panel = new System.Windows.Forms.Panel();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.Interface = new System.Windows.Forms.ComboBox();
+            this.Interface_label = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.fw_log_listview = new System.Windows.Forms.ListView();
+            this.fw_SrcIP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fw_DestIP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fw_Packet = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -77,6 +117,13 @@
             this.tabPage3.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Snort_button)).BeginInit();
+            this.Max_panel.SuspendLayout();
+            this.Rule_dir_panel.SuspendLayout();
+            this.Home_net_panel.SuspendLayout();
+            this.Interface_panel.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,6 +132,8 @@
             this.materialTabControl1.Controls.Add(this.tabPage1);
             this.materialTabControl1.Controls.Add(this.tabPage2);
             this.materialTabControl1.Controls.Add(this.tabPage3);
+            this.materialTabControl1.Controls.Add(this.tabPage4);
+            this.materialTabControl1.Controls.Add(this.tabPage5);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Location = new System.Drawing.Point(0, 109);
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -120,7 +169,7 @@
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(871, 575);
+            this.listView1.Size = new System.Drawing.Size(833, 575);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -370,6 +419,374 @@
             this.materialLabel12.TabIndex = 3;
             this.materialLabel12.Text = "장비 IP";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.Snort_button);
+            this.tabPage4.Controls.Add(this.rule_add_bt);
+            this.tabPage4.Controls.Add(this.Rule_listView);
+            this.tabPage4.Controls.Add(this.Max_panel);
+            this.tabPage4.Controls.Add(this.Rule_dir_panel);
+            this.tabPage4.Controls.Add(this.Home_net_panel);
+            this.tabPage4.Controls.Add(this.Interface_panel);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(985, 684);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Snort";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // Snort_button
+            // 
+            this.Snort_button.BackgroundImage = global::WindowsFormsApplication4.Properties.Resources.snort;
+            this.Snort_button.Location = new System.Drawing.Point(349, 407);
+            this.Snort_button.Name = "Snort_button";
+            this.Snort_button.Size = new System.Drawing.Size(220, 121);
+            this.Snort_button.TabIndex = 22;
+            this.Snort_button.TabStop = false;
+            this.Snort_button.Click += new System.EventHandler(this.Snort_button_Click);
+            // 
+            // rule_add_bt
+            // 
+            this.rule_add_bt.Location = new System.Drawing.Point(885, 410);
+            this.rule_add_bt.Name = "rule_add_bt";
+            this.rule_add_bt.Size = new System.Drawing.Size(75, 23);
+            this.rule_add_bt.TabIndex = 21;
+            this.rule_add_bt.Text = "button2";
+            this.rule_add_bt.UseVisualStyleBackColor = true;
+            this.rule_add_bt.Click += new System.EventHandler(this.rule_add_bt_Click);
+            // 
+            // Rule_listView
+            // 
+            this.Rule_listView.BackgroundImageTiled = true;
+            this.Rule_listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader11,
+            this.columnHeader12,
+            this.columnHeader13,
+            this.columnHeader14});
+            this.Rule_listView.GridLines = true;
+            this.Rule_listView.Location = new System.Drawing.Point(349, 20);
+            this.Rule_listView.Name = "Rule_listView";
+            this.Rule_listView.Size = new System.Drawing.Size(613, 366);
+            this.Rule_listView.TabIndex = 20;
+            this.Rule_listView.UseCompatibleStateImageBehavior = false;
+            this.Rule_listView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Action";
+            this.columnHeader6.Width = 47;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Protocol";
+            this.columnHeader7.Width = 59;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "SrcIP";
+            this.columnHeader8.Width = 69;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "SrcPort";
+            this.columnHeader9.Width = 55;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "DestIP";
+            this.columnHeader10.Width = 72;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "DestPort";
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Msg";
+            this.columnHeader12.Width = 117;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Content";
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "Sid";
+            this.columnHeader14.Width = 38;
+            // 
+            // Max_panel
+            // 
+            this.Max_panel.Controls.Add(this.button17);
+            this.Max_panel.Controls.Add(this.button18);
+            this.Max_panel.Controls.Add(this.Max_udp_label);
+            this.Max_panel.Controls.Add(this.Max_udp);
+            this.Max_panel.Controls.Add(this.Max_tcp_label);
+            this.Max_panel.Controls.Add(this.Max_tcp);
+            this.Max_panel.Location = new System.Drawing.Point(22, 340);
+            this.Max_panel.Name = "Max_panel";
+            this.Max_panel.Size = new System.Drawing.Size(301, 189);
+            this.Max_panel.TabIndex = 18;
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(232, 156);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(64, 23);
+            this.button17.TabIndex = 3;
+            this.button17.Text = "Commit";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Visible = false;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(164, 156);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(64, 23);
+            this.button18.TabIndex = 2;
+            this.button18.Text = "Edit";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // Max_udp_label
+            // 
+            this.Max_udp_label.AutoSize = true;
+            this.Max_udp_label.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Max_udp_label.Location = new System.Drawing.Point(4, 107);
+            this.Max_udp_label.Name = "Max_udp_label";
+            this.Max_udp_label.Size = new System.Drawing.Size(93, 20);
+            this.Max_udp_label.TabIndex = 1;
+            this.Max_udp_label.Text = "Max_udp";
+            // 
+            // Max_udp
+            // 
+            this.Max_udp.Location = new System.Drawing.Point(9, 157);
+            this.Max_udp.Name = "Max_udp";
+            this.Max_udp.ReadOnly = true;
+            this.Max_udp.Size = new System.Drawing.Size(150, 21);
+            this.Max_udp.TabIndex = 5;
+            this.Max_udp.Text = "20000";
+            // 
+            // Max_tcp_label
+            // 
+            this.Max_tcp_label.AutoSize = true;
+            this.Max_tcp_label.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Max_tcp_label.Location = new System.Drawing.Point(4, 4);
+            this.Max_tcp_label.Name = "Max_tcp_label";
+            this.Max_tcp_label.Size = new System.Drawing.Size(90, 20);
+            this.Max_tcp_label.TabIndex = 1;
+            this.Max_tcp_label.Text = "Max_tcp";
+            // 
+            // Max_tcp
+            // 
+            this.Max_tcp.Location = new System.Drawing.Point(9, 54);
+            this.Max_tcp.Name = "Max_tcp";
+            this.Max_tcp.ReadOnly = true;
+            this.Max_tcp.Size = new System.Drawing.Size(150, 21);
+            this.Max_tcp.TabIndex = 5;
+            this.Max_tcp.Text = "20000";
+            // 
+            // Rule_dir_panel
+            // 
+            this.Rule_dir_panel.Controls.Add(this.button15);
+            this.Rule_dir_panel.Controls.Add(this.button16);
+            this.Rule_dir_panel.Controls.Add(this.Rule_dir_label);
+            this.Rule_dir_panel.Controls.Add(this.Rule_dir);
+            this.Rule_dir_panel.Location = new System.Drawing.Point(22, 232);
+            this.Rule_dir_panel.Name = "Rule_dir_panel";
+            this.Rule_dir_panel.Size = new System.Drawing.Size(301, 85);
+            this.Rule_dir_panel.TabIndex = 17;
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(232, 53);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(64, 23);
+            this.button15.TabIndex = 3;
+            this.button15.Text = "Commit";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Visible = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(164, 53);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(64, 23);
+            this.button16.TabIndex = 2;
+            this.button16.Text = "Edit";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // Rule_dir_label
+            // 
+            this.Rule_dir_label.AutoSize = true;
+            this.Rule_dir_label.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Rule_dir_label.Location = new System.Drawing.Point(4, 4);
+            this.Rule_dir_label.Name = "Rule_dir_label";
+            this.Rule_dir_label.Size = new System.Drawing.Size(81, 20);
+            this.Rule_dir_label.TabIndex = 1;
+            this.Rule_dir_label.Text = "Rule_dir";
+            // 
+            // Rule_dir
+            // 
+            this.Rule_dir.Location = new System.Drawing.Point(9, 54);
+            this.Rule_dir.Name = "Rule_dir";
+            this.Rule_dir.ReadOnly = true;
+            this.Rule_dir.Size = new System.Drawing.Size(150, 21);
+            this.Rule_dir.TabIndex = 5;
+            this.Rule_dir.Text = "$SNORT_DIR/rules/";
+            // 
+            // Home_net_panel
+            // 
+            this.Home_net_panel.Controls.Add(this.button13);
+            this.Home_net_panel.Controls.Add(this.button14);
+            this.Home_net_panel.Controls.Add(this.Home_net_label);
+            this.Home_net_panel.Controls.Add(this.Home_net);
+            this.Home_net_panel.Location = new System.Drawing.Point(22, 125);
+            this.Home_net_panel.Name = "Home_net_panel";
+            this.Home_net_panel.Size = new System.Drawing.Size(301, 85);
+            this.Home_net_panel.TabIndex = 16;
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(232, 53);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(64, 23);
+            this.button13.TabIndex = 3;
+            this.button13.Text = "Commit";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Visible = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(164, 53);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(64, 23);
+            this.button14.TabIndex = 2;
+            this.button14.Text = "Edit";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // Home_net_label
+            // 
+            this.Home_net_label.AutoSize = true;
+            this.Home_net_label.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Home_net_label.Location = new System.Drawing.Point(4, 4);
+            this.Home_net_label.Name = "Home_net_label";
+            this.Home_net_label.Size = new System.Drawing.Size(103, 20);
+            this.Home_net_label.TabIndex = 1;
+            this.Home_net_label.Text = "Home_net";
+            // 
+            // Home_net
+            // 
+            this.Home_net.Location = new System.Drawing.Point(9, 54);
+            this.Home_net.Name = "Home_net";
+            this.Home_net.ReadOnly = true;
+            this.Home_net.Size = new System.Drawing.Size(150, 21);
+            this.Home_net.TabIndex = 5;
+            this.Home_net.Text = "192.168.1.0/24";
+            // 
+            // Interface_panel
+            // 
+            this.Interface_panel.Controls.Add(this.button12);
+            this.Interface_panel.Controls.Add(this.button11);
+            this.Interface_panel.Controls.Add(this.Interface);
+            this.Interface_panel.Controls.Add(this.Interface_label);
+            this.Interface_panel.Location = new System.Drawing.Point(22, 20);
+            this.Interface_panel.Name = "Interface_panel";
+            this.Interface_panel.Size = new System.Drawing.Size(301, 85);
+            this.Interface_panel.TabIndex = 15;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(164, 53);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(64, 23);
+            this.button12.TabIndex = 3;
+            this.button12.Text = "Edit";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(232, 53);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(64, 23);
+            this.button11.TabIndex = 2;
+            this.button11.Text = "Commit";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Visible = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // Interface
+            // 
+            this.Interface.FormattingEnabled = true;
+            this.Interface.Items.AddRange(new object[] {
+            "eth0",
+            "eth1"});
+            this.Interface.Location = new System.Drawing.Point(9, 54);
+            this.Interface.Name = "Interface";
+            this.Interface.Size = new System.Drawing.Size(150, 20);
+            this.Interface.TabIndex = 1;
+            // 
+            // Interface_label
+            // 
+            this.Interface_label.AutoSize = true;
+            this.Interface_label.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Interface_label.Location = new System.Drawing.Point(4, 4);
+            this.Interface_label.Name = "Interface_label";
+            this.Interface_label.Size = new System.Drawing.Size(91, 20);
+            this.Interface_label.TabIndex = 0;
+            this.Interface_label.Text = "Interface";
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.fw_log_listview);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(985, 684);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Firewall";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // fw_log_listview
+            // 
+            this.fw_log_listview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.fw_SrcIP,
+            this.fw_DestIP,
+            this.fw_Packet});
+            this.fw_log_listview.GridLines = true;
+            this.fw_log_listview.Location = new System.Drawing.Point(3, 3);
+            this.fw_log_listview.Name = "fw_log_listview";
+            this.fw_log_listview.Size = new System.Drawing.Size(976, 360);
+            this.fw_log_listview.TabIndex = 0;
+            this.fw_log_listview.UseCompatibleStateImageBehavior = false;
+            this.fw_log_listview.View = System.Windows.Forms.View.Details;
+            // 
+            // fw_SrcIP
+            // 
+            this.fw_SrcIP.Text = "SrcIP";
+            this.fw_SrcIP.Width = 99;
+            // 
+            // fw_DestIP
+            // 
+            this.fw_DestIP.Text = "DestIP";
+            this.fw_DestIP.Width = 108;
+            // 
+            // fw_Packet
+            // 
+            this.fw_Packet.Text = "Packet";
+            this.fw_Packet.Width = 614;
+            // 
             // materialTabSelector1
             // 
             this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
@@ -433,6 +850,7 @@
             this.Controls.Add(this.materialTabControl1);
             this.Name = "MainForm";
             this.Text = "통합관제시스템";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
             this.materialTabControl1.ResumeLayout(false);
@@ -447,6 +865,17 @@
             this.panel7.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Snort_button)).EndInit();
+            this.Max_panel.ResumeLayout(false);
+            this.Max_panel.PerformLayout();
+            this.Rule_dir_panel.ResumeLayout(false);
+            this.Rule_dir_panel.PerformLayout();
+            this.Home_net_panel.ResumeLayout(false);
+            this.Home_net_panel.PerformLayout();
+            this.Interface_panel.ResumeLayout(false);
+            this.Interface_panel.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -485,6 +914,46 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.ListView Rule_listView;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.Label Max_udp_label;
+        private System.Windows.Forms.TextBox Max_udp;
+        private System.Windows.Forms.Panel Max_panel;
+        private System.Windows.Forms.Label Max_tcp_label;
+        private System.Windows.Forms.TextBox Max_tcp;
+        private System.Windows.Forms.Panel Rule_dir_panel;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Label Rule_dir_label;
+        private System.Windows.Forms.TextBox Rule_dir;
+        private System.Windows.Forms.Panel Home_net_panel;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Label Home_net_label;
+        private System.Windows.Forms.TextBox Home_net;
+        private System.Windows.Forms.Panel Interface_panel;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.ComboBox Interface;
+        private System.Windows.Forms.Label Interface_label;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button rule_add_bt;
+        private System.Windows.Forms.PictureBox Snort_button;
+        private System.Windows.Forms.ListView fw_log_listview;
+        private System.Windows.Forms.ColumnHeader fw_SrcIP;
+        private System.Windows.Forms.ColumnHeader fw_DestIP;
+        private System.Windows.Forms.ColumnHeader fw_Packet;
 
     }
 }
