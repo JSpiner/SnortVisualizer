@@ -63,6 +63,12 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="fw_Log.cs" />
+    <Compile Include="fw_Ruleedit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fw_Ruleedit.designer.cs">
+      <DependentUpon>fw_Ruleedit.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fw_Ruleedit.resx">
+      <DependentUpon>fw_Ruleedit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

@@ -40,6 +40,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.fw_rule_add_bt = new System.Windows.Forms.Button();
+            this.fw_Rule_listView = new System.Windows.Forms.ListView();
+            this.Rule_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -144,6 +147,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.fw_rule_add_bt);
+            this.tabPage1.Controls.Add(this.fw_Rule_listView);
             this.tabPage1.Controls.Add(this.listView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -153,6 +158,34 @@
             this.tabPage1.Text = "패킷목록";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // fw_rule_add_bt
+            // 
+            this.fw_rule_add_bt.Location = new System.Drawing.Point(902, 257);
+            this.fw_rule_add_bt.Name = "fw_rule_add_bt";
+            this.fw_rule_add_bt.Size = new System.Drawing.Size(75, 20);
+            this.fw_rule_add_bt.TabIndex = 4;
+            this.fw_rule_add_bt.Text = "button2";
+            this.fw_rule_add_bt.UseVisualStyleBackColor = true;
+            this.fw_rule_add_bt.Click += new System.EventHandler(this.fw_rule_add_bt_Click);
+            // 
+            // fw_Rule_listView
+            // 
+            this.fw_Rule_listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Rule_name});
+            this.fw_Rule_listView.GridLines = true;
+            this.fw_Rule_listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.fw_Rule_listView.Location = new System.Drawing.Point(840, 0);
+            this.fw_Rule_listView.Name = "fw_Rule_listView";
+            this.fw_Rule_listView.Size = new System.Drawing.Size(137, 242);
+            this.fw_Rule_listView.TabIndex = 3;
+            this.fw_Rule_listView.UseCompatibleStateImageBehavior = false;
+            this.fw_Rule_listView.View = System.Windows.Forms.View.Details;
+            // 
+            // Rule_name
+            // 
+            this.Rule_name.Text = "Rule_name";
+            this.Rule_name.Width = 116;
             // 
             // listView1
             // 
@@ -282,7 +315,7 @@
             this.materialLabel3.Location = new System.Drawing.Point(782, 167);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(103, 19);
+            this.materialLabel3.Size = new System.Drawing.Size(79, 19);
             this.materialLabel3.TabIndex = 5;
             this.materialLabel3.Text = "시간대별 통계";
             // 
@@ -295,7 +328,7 @@
             this.materialLabel2.Location = new System.Drawing.Point(433, 167);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(70, 19);
+            this.materialLabel2.Size = new System.Drawing.Size(58, 19);
             this.materialLabel2.TabIndex = 4;
             this.materialLabel2.Text = "ip별 통계";
             // 
@@ -308,7 +341,7 @@
             this.materialLabel1.Location = new System.Drawing.Point(88, 167);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(88, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(68, 19);
             this.materialLabel1.TabIndex = 3;
             this.materialLabel1.Text = "포트별 통계";
             // 
@@ -358,7 +391,7 @@
             this.materialLabel13.Location = new System.Drawing.Point(3, 30);
             this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel13.Name = "materialLabel13";
-            this.materialLabel13.Size = new System.Drawing.Size(247, 19);
+            this.materialLabel13.Size = new System.Drawing.Size(195, 19);
             this.materialLabel13.TabIndex = 4;
             this.materialLabel13.Text = "장비와 연결할 port를 입력해주세요.";
             // 
@@ -371,7 +404,7 @@
             this.materialLabel14.Location = new System.Drawing.Point(3, 4);
             this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(80, 19);
+            this.materialLabel14.Size = new System.Drawing.Size(72, 19);
             this.materialLabel14.TabIndex = 3;
             this.materialLabel14.Text = "장비 PORT";
             // 
@@ -402,7 +435,7 @@
             this.materialLabel11.Location = new System.Drawing.Point(3, 30);
             this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel11.Name = "materialLabel11";
-            this.materialLabel11.Size = new System.Drawing.Size(232, 19);
+            this.materialLabel11.Size = new System.Drawing.Size(180, 19);
             this.materialLabel11.TabIndex = 4;
             this.materialLabel11.Text = "장비와 연결할 ip를 입력해주세요.";
             // 
@@ -415,7 +448,7 @@
             this.materialLabel12.Location = new System.Drawing.Point(3, 4);
             this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel12.Name = "materialLabel12";
-            this.materialLabel12.Size = new System.Drawing.Size(56, 19);
+            this.materialLabel12.Size = new System.Drawing.Size(48, 19);
             this.materialLabel12.TabIndex = 3;
             this.materialLabel12.Text = "장비 IP";
             // 
@@ -767,7 +800,7 @@
             this.fw_log_listview.GridLines = true;
             this.fw_log_listview.Location = new System.Drawing.Point(3, 3);
             this.fw_log_listview.Name = "fw_log_listview";
-            this.fw_log_listview.Size = new System.Drawing.Size(976, 360);
+            this.fw_log_listview.Size = new System.Drawing.Size(826, 564);
             this.fw_log_listview.TabIndex = 0;
             this.fw_log_listview.UseCompatibleStateImageBehavior = false;
             this.fw_log_listview.View = System.Windows.Forms.View.Details;
@@ -834,7 +867,7 @@
             this.materialLabel7.Location = new System.Drawing.Point(455, 42);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(118, 19);
+            this.materialLabel7.Size = new System.Drawing.Size(90, 19);
             this.materialLabel7.TabIndex = 4;
             this.materialLabel7.Text = "오늘의 보안경보";
             // 
@@ -954,6 +987,9 @@
         private System.Windows.Forms.ColumnHeader fw_SrcIP;
         private System.Windows.Forms.ColumnHeader fw_DestIP;
         private System.Windows.Forms.ColumnHeader fw_Packet;
+        private System.Windows.Forms.Button fw_rule_add_bt;
+        private System.Windows.Forms.ListView fw_Rule_listView;
+        private System.Windows.Forms.ColumnHeader Rule_name;
 
     }
 }

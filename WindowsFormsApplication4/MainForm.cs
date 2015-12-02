@@ -548,5 +548,13 @@ namespace WindowsFormsApplication4
             fw_log_listview.Items.Add(item);
         }
 
+        private void fw_rule_add_bt_Click(object sender, EventArgs e)
+        {
+            fw_Ruleedit fw_rule_edit = new fw_Ruleedit();
+            fw_rule_edit.main = this;
+            fw_rule_edit.listview = this.fw_Rule_listView;
+            fw_rule_edit.Show();
+        }
+
     }
 }
