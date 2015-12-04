@@ -39,6 +39,7 @@ namespace WindowsFormsApplication4
       };
 
         public List<LogModel> logList;
+        public SocketForm socketManager;
 
         public MainForm()
         {
@@ -58,18 +59,18 @@ namespace WindowsFormsApplication4
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Thread initThread = new Thread(initSocket);
-            initThread.Start();
 
             String str = "{ \"type\": 1, \"raw\": \"[**] [1:5:0] icmp in packet!! [**] \n[Priority: 0]\n 10/23-19:52:59.979665 192.168.1.2 -> 192.168.1.1 \n ICMP TTL:64 TOS:0x0 ID:60363 IpLen:20 DgmLen:84 DF\nType:8  Code:0  ID:23811   Seq:2  ECHO \" }";
             init();
-            procData(str);
 //            SerialTest t = new SerialTest();
         }
 
 
         private void init()
         {
+            socketManager = new SocketForm(this);
+            socketManager.Show();
+
 
             listView1.Columns[0].Width = 50;
             listView1.Columns[1].Width = 80;
@@ -132,135 +133,15 @@ namespace WindowsFormsApplication4
 
 
 
-        }
+        }     
 
-        Socket sender;
+        public delegate void DelegateFunction(ListViewItem item);
 
-        void receiveData()
-        {
-
-            StringBuilder builder = new StringBuilder();
-
-            while (true)
-            {
-
-
-                byte[] bytes = new byte[1024];
-
-
-                int bytesRec = sender.Receive(bytes);
-
-                if (bytesRec != 0)
-                {
-                    Console.WriteLine("Receive : {0} {1}",
-                       Encoding.ASCII.GetString(bytes, 0, bytesRec),
-                       bytesRec);
-                    String result = Encoding.ASCII.GetString(bytes, 0, bytesRec);
-                    builder.Append(result);
-
-                    if (result.IndexOf("}") != -1)
-                    {
-                        procData(builder.ToString());
-                        builder.Clear();
-                    }
-                }
-            }
-        }
-
-        delegate void DelegateFunction(ListViewItem item);
-
-        void addItem(ListViewItem item)
+        public void addItem(ListViewItem item)
         {
             listView1.Items.Add(item);
         }
-
-        void procData(String str)
-        {
-
-            try
-            {
-                JEParser parser = JEParser.getInstance(typeof(SocketModel));
-                SocketModel obj = (SocketModel)parser.parse(str);
-
-                switch (obj.type)
-                {
-                    case 1:
-
-                        //String log = base64Decode(obj.raw);//.Split(new[] { "\n" }, StringSplitOptions.None);
-                        String log = obj.raw;
-                        //foreach (String log in logs)
-                        //{
-                        LogModel model = LogModel.parse(log);
-                        this.logList.Add(model);
-                        String[] datas = {
-                     "log",
-                     model.logBody.ipHeader.protocol.ToString(),
-                     model.logBody.senderIp,
-                     model.logBody.receiverIp,
-                     model.logHeader.alertSig.alertMsg};
-
-                        ListViewItem item = null;
-                        foreach (String data in datas)
-                        {
-                            if (item == null)
-                            {
-                                item = new ListViewItem(data);
-                            }
-                            else
-                            {
-                                item.SubItems.Add(data);
-                            }
-
-                        }
-                        listView1.Invoke(new DelegateFunction(addItem), new object[] { item});
-//                        listView1.Items.Add(item);
-
-                        //}
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-
-                }
-            }
-            catch (Exception e)
-            {
-//                sendMessage("{\"type\":3, \"msg\":\"error\"");
-                Console.WriteLine("parse error"+e.Message);
-            }
-        }
-
-        public void sendMessage(int type, String str)
-        {
-            JsonObjectCollection res = new JsonObjectCollection();
-            res.Add(new JsonStringValue("type", type.ToString()));
-            res.Add(new JsonStringValue("raw", str));
-            byte[] msg = Encoding.ASCII.GetBytes(res.ToString());
-
-
-            MessageBox.Show(str);
-
-            switch (type)
-            {
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-            }
-            int bytesSent = sender.Send(msg);
-            Console.WriteLine("send data {0}", bytesSent);
-        }
+        
 
         String base64Decode(String str)
         {
@@ -268,38 +149,6 @@ namespace WindowsFormsApplication4
             return encoding.GetString(System.Convert.FromBase64String(str));
         }
 
-        void initSocket()
-        {
-
-            String ip = "192.168.1.1";
-            String port = "9999";
-
-
-            IPHostEntry ipHost = Dns.Resolve(ip);
-            IPAddress ipAddr = ipHost.AddressList[0];
-            IPEndPoint ipEndPoint = new IPEndPoint(ipAddr, Convert.ToInt32(port));
-
-
-            Console.WriteLine("Try to connect {0}", (ip + ":" + port));
-
-            try
-            {
-                sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-                sender.Connect(ipEndPoint);
-
-                Console.WriteLine("Socket connected to {0}", sender.RemoteEndPoint.ToString());
-            }
-            catch (Exception err)
-            {
-                Console.WriteLine("error : " + err.Message);
-                initSocket();
-                return;
-            }
-
-            receiveData();
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -486,7 +335,7 @@ namespace WindowsFormsApplication4
             this.button11.Visible = false;
 
             String item = (String)Interface.SelectedItem;
-            sendMessage(3, item);
+            socketManager.sendMessage(3, item);
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -495,7 +344,7 @@ namespace WindowsFormsApplication4
             this.button13.Visible = false;
 
             String item = "uci set snort.home.HOME_NET=" + Home_net.Text;
-            sendMessage(3, item);
+            socketManager.sendMessage(3, item);
             Home_net.ReadOnly = true;
         }
 
@@ -505,7 +354,7 @@ namespace WindowsFormsApplication4
             this.button15.Visible = false;
 
             String item = "uci set snort.home.RULE_DIR=" + Rule_dir.Text;
-            sendMessage(3, item);
+            socketManager.sendMessage(3, item);
             Rule_dir.ReadOnly = true;
         }
 
@@ -515,9 +364,10 @@ namespace WindowsFormsApplication4
             this.button17.Visible = false;
 
             String item = "uci set snort.preprocessors.stream5_global=':max_tcp " + Max_tcp.Text + ", max_udp " + Max_udp.Text + "'";
-            sendMessage(3, item);
+            socketManager.sendMessage(3, item);
             Max_tcp.ReadOnly = true;
             Max_udp.ReadOnly = true;
+
         }
 
 
@@ -538,14 +388,8 @@ namespace WindowsFormsApplication4
 
         private void Snort_button_Click(object sender, EventArgs e)
         {
-            //String str = "/etc/init.d/snort restart";
-            //sendMessage(2, str);
-            fw_Log fwlog = new fw_Log("Nov 28 17:13:01 OpenWrt [  812.000000] Black_List Deny : IN=br-lan OUT= MAC=01:00:5e:00:00:01:4c:5e:0c:39:42:63:08:00 SRC=0.0.0.0 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0xC0 TTL=1 ID=0 DF PROTO=2");
-            MessageBox.Show("sip:" + fwlog.Src_ip + " dip:" + fwlog.Dest_ip);
-            ListViewItem item = new ListViewItem(fwlog.Src_ip);
-            item.SubItems.Add(fwlog.Dest_ip);
-            item.SubItems.Add(fwlog.raw);
-            fw_log_listview.Items.Add(item);
+            String str = "/etc/init.d/snort restart";
+            socketManager.sendMessage(2, str);
         }
 
         private void fw_rule_add_bt_Click(object sender, EventArgs e)

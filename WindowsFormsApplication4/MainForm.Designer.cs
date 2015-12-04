@@ -40,9 +40,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.fw_rule_add_bt = new System.Windows.Forms.Button();
-            this.fw_Rule_listView = new System.Windows.Forms.ListView();
-            this.Rule_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -111,6 +108,9 @@
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
+            this.fw_rule_add_bt = new System.Windows.Forms.Button();
+            this.fw_Rule_listView = new System.Windows.Forms.ListView();
+            this.Rule_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -147,8 +147,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.fw_rule_add_bt);
-            this.tabPage1.Controls.Add(this.fw_Rule_listView);
             this.tabPage1.Controls.Add(this.listView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -158,34 +156,6 @@
             this.tabPage1.Text = "패킷목록";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
-            // 
-            // fw_rule_add_bt
-            // 
-            this.fw_rule_add_bt.Location = new System.Drawing.Point(902, 257);
-            this.fw_rule_add_bt.Name = "fw_rule_add_bt";
-            this.fw_rule_add_bt.Size = new System.Drawing.Size(75, 20);
-            this.fw_rule_add_bt.TabIndex = 4;
-            this.fw_rule_add_bt.Text = "button2";
-            this.fw_rule_add_bt.UseVisualStyleBackColor = true;
-            this.fw_rule_add_bt.Click += new System.EventHandler(this.fw_rule_add_bt_Click);
-            // 
-            // fw_Rule_listView
-            // 
-            this.fw_Rule_listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Rule_name});
-            this.fw_Rule_listView.GridLines = true;
-            this.fw_Rule_listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.fw_Rule_listView.Location = new System.Drawing.Point(840, 0);
-            this.fw_Rule_listView.Name = "fw_Rule_listView";
-            this.fw_Rule_listView.Size = new System.Drawing.Size(137, 242);
-            this.fw_Rule_listView.TabIndex = 3;
-            this.fw_Rule_listView.UseCompatibleStateImageBehavior = false;
-            this.fw_Rule_listView.View = System.Windows.Forms.View.Details;
-            // 
-            // Rule_name
-            // 
-            this.Rule_name.Text = "Rule_name";
-            this.Rule_name.Width = 116;
             // 
             // listView1
             // 
@@ -200,9 +170,9 @@
             this.listView1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.Location = new System.Drawing.Point(8, 6);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(833, 575);
+            this.listView1.Size = new System.Drawing.Size(949, 575);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -782,6 +752,8 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.fw_rule_add_bt);
+            this.tabPage5.Controls.Add(this.fw_Rule_listView);
             this.tabPage5.Controls.Add(this.fw_log_listview);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
@@ -870,6 +842,33 @@
             this.materialLabel7.Size = new System.Drawing.Size(90, 19);
             this.materialLabel7.TabIndex = 4;
             this.materialLabel7.Text = "오늘의 보안경보";
+            // 
+            // fw_rule_add_bt
+            // 
+            this.fw_rule_add_bt.Location = new System.Drawing.Point(897, 260);
+            this.fw_rule_add_bt.Name = "fw_rule_add_bt";
+            this.fw_rule_add_bt.Size = new System.Drawing.Size(75, 20);
+            this.fw_rule_add_bt.TabIndex = 6;
+            this.fw_rule_add_bt.Text = "button2";
+            this.fw_rule_add_bt.UseVisualStyleBackColor = true;
+            // 
+            // fw_Rule_listView
+            // 
+            this.fw_Rule_listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.fw_Rule_listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Rule_name});
+            this.fw_Rule_listView.GridLines = true;
+            this.fw_Rule_listView.Location = new System.Drawing.Point(835, 3);
+            this.fw_Rule_listView.Name = "fw_Rule_listView";
+            this.fw_Rule_listView.Size = new System.Drawing.Size(137, 242);
+            this.fw_Rule_listView.TabIndex = 5;
+            this.fw_Rule_listView.UseCompatibleStateImageBehavior = false;
+            this.fw_Rule_listView.View = System.Windows.Forms.View.Details;
+            // 
+            // Rule_name
+            // 
+            this.Rule_name.Text = "Rule_name";
+            this.Rule_name.Width = 116;
             // 
             // MainForm
             // 
@@ -983,7 +982,7 @@
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button rule_add_bt;
         private System.Windows.Forms.PictureBox Snort_button;
-        private System.Windows.Forms.ListView fw_log_listview;
+        public System.Windows.Forms.ListView fw_log_listview;
         private System.Windows.Forms.ColumnHeader fw_SrcIP;
         private System.Windows.Forms.ColumnHeader fw_DestIP;
         private System.Windows.Forms.ColumnHeader fw_Packet;

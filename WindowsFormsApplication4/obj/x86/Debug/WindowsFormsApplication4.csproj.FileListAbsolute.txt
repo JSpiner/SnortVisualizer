@@ -13,3 +13,4 @@ C:\Users\JSpiner\documents\visual studio 2010\Projects\WindowsFormsApplication4\
 C:\Users\JSpiner\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Debug\WindowsFormsApplication4.Form2.resources
 C:\Users\JSpiner\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Debug\System.Net.Json.dll
 C:\Users\JSpiner\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Debug\WindowsFormsApplication4.fw_Ruleedit.resources
+C:\Users\JSpiner\documents\visual studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Debug\WindowsFormsApplication4.SocketForm.resources

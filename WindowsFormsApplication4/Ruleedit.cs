@@ -37,7 +37,7 @@ namespace WindowsFormsApplication4
             listview.Items.Add(item);
             String str = tb_Action.Text + " " + tb_Protocol.Text + " " + tb_SrcIP.Text + " " + tb_SrcPort.Text + " -> " + tb_DestIP.Text + " " + tb_DestPort.Text + " (msg:\"" + tb_Msg.Text + "\"; content:\"" + tb_Content.Text + "\"; sid:" + tb_Sid.Text + ";)";
             MessageBox.Show(str);
-            main.sendMessage(4, str);
+            main.socketManager.sendMessage(4, str);
         }
 
 
