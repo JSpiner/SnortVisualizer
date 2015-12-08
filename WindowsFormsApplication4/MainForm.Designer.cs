@@ -28,6 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -37,7 +47,6 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -100,6 +109,9 @@
             this.Interface = new System.Windows.Forms.ComboBox();
             this.Interface_label = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.fw_rule_add_bt = new System.Windows.Forms.Button();
+            this.fw_Rule_listView = new System.Windows.Forms.ListView();
+            this.Rule_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.fw_log_listview = new System.Windows.Forms.ListView();
             this.fw_SrcIP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.fw_DestIP = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -108,9 +120,12 @@
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
-            this.fw_rule_add_bt = new System.Windows.Forms.Button();
-            this.fw_Rule_listView = new System.Windows.Forms.ListView();
-            this.Rule_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart5 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart6 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -128,6 +143,9 @@
             this.Interface_panel.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart6)).BeginInit();
             this.SuspendLayout();
             // 
             // materialTabControl1
@@ -203,6 +221,12 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.chart4);
+            this.tabPage2.Controls.Add(this.chart5);
+            this.tabPage2.Controls.Add(this.chart6);
+            this.tabPage2.Controls.Add(this.materialLabel4);
+            this.tabPage2.Controls.Add(this.materialLabel5);
+            this.tabPage2.Controls.Add(this.materialLabel6);
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.chart3);
             this.tabPage2.Controls.Add(this.chart2);
@@ -220,7 +244,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(100, 46);
+            this.button1.Location = new System.Drawing.Point(0, 18);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
@@ -230,49 +254,49 @@
             // 
             // chart3
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart3.Legends.Add(legend1);
-            this.chart3.Location = new System.Drawing.Point(676, 215);
+            chartArea4.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart3.Legends.Add(legend4);
+            this.chart3.Location = new System.Drawing.Point(665, 62);
             this.chart3.Name = "chart3";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart3.Series.Add(series1);
-            this.chart3.Size = new System.Drawing.Size(317, 300);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chart3.Series.Add(series4);
+            this.chart3.Size = new System.Drawing.Size(317, 228);
             this.chart3.TabIndex = 8;
             this.chart3.Text = "chart3";
             // 
             // chart2
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(353, 215);
+            chartArea5.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chart2.Legends.Add(legend5);
+            this.chart2.Location = new System.Drawing.Point(342, 62);
             this.chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(317, 300);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chart2.Series.Add(series5);
+            this.chart2.Size = new System.Drawing.Size(317, 228);
             this.chart2.TabIndex = 7;
             this.chart2.Text = "chart2";
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
-            this.chart1.Location = new System.Drawing.Point(30, 215);
+            chartArea6.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chart1.Legends.Add(legend6);
+            this.chart1.Location = new System.Drawing.Point(19, 62);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(317, 300);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chart1.Series.Add(series6);
+            this.chart1.Size = new System.Drawing.Size(317, 228);
             this.chart1.TabIndex = 6;
             this.chart1.Text = "chart1";
             // 
@@ -282,7 +306,7 @@
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(782, 167);
+            this.materialLabel3.Location = new System.Drawing.Point(771, 14);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(79, 19);
@@ -295,7 +319,7 @@
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(433, 167);
+            this.materialLabel2.Location = new System.Drawing.Point(422, 14);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(58, 19);
@@ -308,7 +332,7 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(88, 167);
+            this.materialLabel1.Location = new System.Drawing.Point(77, 14);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(68, 19);
@@ -763,6 +787,33 @@
             this.tabPage5.Text = "Firewall";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // fw_rule_add_bt
+            // 
+            this.fw_rule_add_bt.Location = new System.Drawing.Point(897, 260);
+            this.fw_rule_add_bt.Name = "fw_rule_add_bt";
+            this.fw_rule_add_bt.Size = new System.Drawing.Size(75, 20);
+            this.fw_rule_add_bt.TabIndex = 6;
+            this.fw_rule_add_bt.Text = "button2";
+            this.fw_rule_add_bt.UseVisualStyleBackColor = true;
+            // 
+            // fw_Rule_listView
+            // 
+            this.fw_Rule_listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.fw_Rule_listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Rule_name});
+            this.fw_Rule_listView.GridLines = true;
+            this.fw_Rule_listView.Location = new System.Drawing.Point(835, 3);
+            this.fw_Rule_listView.Name = "fw_Rule_listView";
+            this.fw_Rule_listView.Size = new System.Drawing.Size(137, 242);
+            this.fw_Rule_listView.TabIndex = 5;
+            this.fw_Rule_listView.UseCompatibleStateImageBehavior = false;
+            this.fw_Rule_listView.View = System.Windows.Forms.View.Details;
+            // 
+            // Rule_name
+            // 
+            this.Rule_name.Text = "Rule_name";
+            this.Rule_name.Width = 116;
+            // 
             // fw_log_listview
             // 
             this.fw_log_listview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -843,32 +894,92 @@
             this.materialLabel7.TabIndex = 4;
             this.materialLabel7.Text = "오늘의 보안경보";
             // 
-            // fw_rule_add_bt
+            // chart4
             // 
-            this.fw_rule_add_bt.Location = new System.Drawing.Point(897, 260);
-            this.fw_rule_add_bt.Name = "fw_rule_add_bt";
-            this.fw_rule_add_bt.Size = new System.Drawing.Size(75, 20);
-            this.fw_rule_add_bt.TabIndex = 6;
-            this.fw_rule_add_bt.Text = "button2";
-            this.fw_rule_add_bt.UseVisualStyleBackColor = true;
+            chartArea1.Name = "ChartArea1";
+            this.chart4.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart4.Legends.Add(legend1);
+            this.chart4.Location = new System.Drawing.Point(654, 352);
+            this.chart4.Name = "chart4";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart4.Series.Add(series1);
+            this.chart4.Size = new System.Drawing.Size(317, 228);
+            this.chart4.TabIndex = 15;
+            this.chart4.Text = "chart4";
             // 
-            // fw_Rule_listView
+            // chart5
             // 
-            this.fw_Rule_listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.fw_Rule_listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Rule_name});
-            this.fw_Rule_listView.GridLines = true;
-            this.fw_Rule_listView.Location = new System.Drawing.Point(835, 3);
-            this.fw_Rule_listView.Name = "fw_Rule_listView";
-            this.fw_Rule_listView.Size = new System.Drawing.Size(137, 242);
-            this.fw_Rule_listView.TabIndex = 5;
-            this.fw_Rule_listView.UseCompatibleStateImageBehavior = false;
-            this.fw_Rule_listView.View = System.Windows.Forms.View.Details;
+            chartArea2.Name = "ChartArea1";
+            this.chart5.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart5.Legends.Add(legend2);
+            this.chart5.Location = new System.Drawing.Point(331, 352);
+            this.chart5.Name = "chart5";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart5.Series.Add(series2);
+            this.chart5.Size = new System.Drawing.Size(317, 228);
+            this.chart5.TabIndex = 14;
+            this.chart5.Text = "chart5";
             // 
-            // Rule_name
+            // chart6
             // 
-            this.Rule_name.Text = "Rule_name";
-            this.Rule_name.Width = 116;
+            chartArea3.Name = "ChartArea1";
+            this.chart6.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart6.Legends.Add(legend3);
+            this.chart6.Location = new System.Drawing.Point(8, 352);
+            this.chart6.Name = "chart6";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart6.Series.Add(series3);
+            this.chart6.Size = new System.Drawing.Size(317, 228);
+            this.chart6.TabIndex = 13;
+            this.chart6.Text = "chart6";
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel4.Location = new System.Drawing.Point(760, 304);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(79, 19);
+            this.materialLabel4.TabIndex = 12;
+            this.materialLabel4.Text = "시간대별 통계";
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel5.Location = new System.Drawing.Point(411, 304);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(58, 19);
+            this.materialLabel5.TabIndex = 11;
+            this.materialLabel5.Text = "ip별 통계";
+            // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.Location = new System.Drawing.Point(66, 304);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(68, 19);
+            this.materialLabel6.TabIndex = 10;
+            this.materialLabel6.Text = "포트별 통계";
             // 
             // MainForm
             // 
@@ -909,6 +1020,9 @@
             this.Interface_panel.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -921,7 +1035,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.ListView listView1;
+        public System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
@@ -989,6 +1103,12 @@
         private System.Windows.Forms.Button fw_rule_add_bt;
         private System.Windows.Forms.ListView fw_Rule_listView;
         private System.Windows.Forms.ColumnHeader Rule_name;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart5;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart6;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
 
     }
 }

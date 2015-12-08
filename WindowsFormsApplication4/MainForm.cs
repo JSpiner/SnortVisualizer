@@ -39,6 +39,7 @@ namespace WindowsFormsApplication4
       };
 
         public List<LogModel> logList;
+        public static List<FLogModel> fLogList;
         public SocketForm socketManager;
 
         public MainForm()
@@ -82,6 +83,7 @@ namespace WindowsFormsApplication4
             Panel p = panel1;
 
             logList = new List<LogModel>();
+            fLogList = new List<FLogModel>();
 
             foreach (String log in logs)
             {

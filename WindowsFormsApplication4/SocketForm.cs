@@ -170,10 +170,20 @@ namespace WindowsFormsApplication4
                         break;
                     case 6:
 
+                        FLogModel flog = new FLogModel(obj.raw);
+                        MainForm.fLogList.Add(flog);
+                        
+                        ListViewItem fw_item = null;
+                        fw_item = new ListViewItem(flog.IN);
+                        fw_item.SubItems.Add(flog.OUT);
+                        fw_item.SubItems.Add(flog.msg); 
+                        
+                        parent.listView1.Invoke(new MainForm.DelegateFunction(fw_addItem), new object[] { fw_item });
+
                         fw_Log fwlog = new fw_Log(obj.raw);
                         //MessageBox.Show("sip:" + fwlog.Src_ip + " dip:" + fwlog.Dest_ip);
                         //MessageBox.Show(fwlog.raw);
-                        ListViewItem fw_item = null;
+                        fw_item = null;
                         fw_item = new ListViewItem(fwlog.Src_ip);
                         fw_item.SubItems.Add(fwlog.Dest_ip);
                         fw_item.SubItems.Add(fwlog.raw); 

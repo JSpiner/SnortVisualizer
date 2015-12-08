@@ -234,7 +234,7 @@ namespace WindowsFormsApplication4.Model
                 this.Type = Convert.ToInt32(getValue(seps[0]));
                 this.Code = Convert.ToInt32(getValue(seps[2]));
                 this.ID = Convert.ToInt32(getValue(seps[4]));
-                this.Seq = Convert.ToInt32(getValue(seps[7]));
+                if(seps[7].Length>=1) this.Seq = Convert.ToInt32(getValue(seps[7]));
             }
 
             private String getValue(String pair)
