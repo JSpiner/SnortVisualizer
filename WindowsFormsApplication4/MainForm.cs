@@ -39,7 +39,7 @@ namespace WindowsFormsApplication4
       };
 
         public List<LogModel> logList;
-        public static List<FLogModel> fLogList;
+        public static List<fw_Log> fLogList;
         public SocketForm socketManager;
         public fw_Ruleedit fw_rule_edit;
         public Ruleedit rule_edit;
@@ -85,7 +85,7 @@ namespace WindowsFormsApplication4
             //Panel p = panel1;
 
             logList = new List<LogModel>();
-            fLogList = new List<FLogModel>();
+            fLogList = new List<fw_Log>();
 
             foreach (String log in logs)
             {
@@ -229,7 +229,7 @@ namespace WindowsFormsApplication4
                 sw = false;
                 foreach (AnalData data in dateList)
                 {
-                    if (data.name == model.logBody.time.ToString())
+                    if (data.name == (model.logBody.time.Hour).ToString())
                     {
                         sw = true;
                         data.count++;
@@ -239,20 +239,20 @@ namespace WindowsFormsApplication4
                 if (!sw)
                 {
                     AnalData tmp = new AnalData();
-                    tmp.name = model.logBody.time.ToString();
-                    portList.Add(tmp);
+                    tmp.name = model.logBody.time.Hour.ToString();
+                    dateList.Add(tmp);
                 }
 
             }
 
-
-            foreach (FLogModel model in fLogList)
+            
+            foreach (fw_Log model in fLogList)
             {
 
                 Boolean sw = false;
                 foreach (AnalData data in fipList)
                 {
-                    if (data.name == model.IN)
+                    if (data.name == model.Dest_ip)
                     {
                         sw = true;
                         data.count++;
@@ -262,14 +262,14 @@ namespace WindowsFormsApplication4
                 if (!sw)
                 {
                     AnalData tmp = new AnalData();
-                    tmp.name = model.IN;
+                    tmp.name = model.Dest_ip;
                     fipList.Add(tmp);
                 }
                 //
                 sw = false;
                 foreach (AnalData data in fportList)
                 {
-                    if (data.name == model.OUT)
+                    if (data.name == model.Dest_port)
                     {
                         sw = true;
                         data.count++;
@@ -279,7 +279,7 @@ namespace WindowsFormsApplication4
                 if (!sw)
                 {
                     AnalData tmp = new AnalData();
-                    tmp.name = model.OUT;
+                    tmp.name = model.Dest_port;
                     fportList.Add(tmp);
                 }
                 //
@@ -287,7 +287,7 @@ namespace WindowsFormsApplication4
                 sw = false;
                 foreach (AnalData data in fdateList)
                 {
-                    if (data.name == model.time.ToString())
+                    if (data.name == model.raw)
                     {
                         sw = true;
                         data.count++;
@@ -297,12 +297,12 @@ namespace WindowsFormsApplication4
                 if (!sw)
                 {
                     AnalData tmp = new AnalData();
-                    tmp.name = model.time.ToString();
+                    tmp.name = model.raw.ToString();
                     fportList.Add(tmp);
                 }
 
             }
-
+            
             initIPChart(ipList);
             initPortChart(portList);
             initDateList(dateList);
@@ -415,7 +415,7 @@ namespace WindowsFormsApplication4
         {
 
             chart4.Series.Clear();
-
+   
             Series series = new Series();
             series.ChartType = SeriesChartType.Line;
 

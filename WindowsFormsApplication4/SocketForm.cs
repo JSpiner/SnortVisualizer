@@ -173,13 +173,13 @@ namespace WindowsFormsApplication4
                         break;
                     case 6:
 
-                        FLogModel flog = new FLogModel(obj.raw);
+                        fw_Log flog = new fw_Log(obj.raw);
                         MainForm.fLogList.Add(flog);
                         
                         ListViewItem fw_item = null;
-                        fw_item = new ListViewItem(flog.IN);
-                        fw_item.SubItems.Add(flog.OUT);
-                        fw_item.SubItems.Add(flog.msg); 
+                        fw_item = new ListViewItem(flog.Dest_ip);
+                        fw_item.SubItems.Add(flog.Dest_port);
+                        fw_item.SubItems.Add(flog.raw); 
                         
                         parent.listView1.Invoke(new MainForm.DelegateFunction(fw_addItem), new object[] { fw_item });
 
