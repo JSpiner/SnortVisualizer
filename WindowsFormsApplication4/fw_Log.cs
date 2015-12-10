@@ -10,7 +10,9 @@ namespace WindowsFormsApplication4.Model
     {
         public String raw;
         public String Src_ip;
+        public String Src_port;
         public String Dest_ip;
+        public String Dest_port;
 
         public fw_Log(String log)
         {
@@ -25,11 +27,19 @@ namespace WindowsFormsApplication4.Model
                 {
                     if (sub_line.Equals("SRC"))
                     {
-                        this.Src_ip = sub_lines[i+1];
+                        this.Src_ip = sub_lines[i + 1];
                     }
                     else if (sub_line.Equals("DST"))
                     {
                         this.Dest_ip = sub_lines[i + 1];
+                    }
+                    else if (sub_line.Equals("SPT"))
+                    {
+                        this.Src_port = sub_lines[i + 1];
+                    }
+                    else if (sub_line.Equals("DPT"))
+                    {
+                        this.Dest_port = sub_lines[i + 1];
                     }
                     i++;
                 }

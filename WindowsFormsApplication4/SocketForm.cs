@@ -21,6 +21,7 @@ namespace WindowsFormsApplication4
     {
 
         Socket sender;
+        Socket receiver;
 
         MainForm parent;
 
@@ -57,7 +58,8 @@ namespace WindowsFormsApplication4
         {
 
             String ip = "192.168.1.1";
-            String port = "9999";
+            String port = "9994";
+
 
 
             IPHostEntry ipHost = Dns.Resolve(ip);
@@ -70,10 +72,11 @@ namespace WindowsFormsApplication4
             try
             {
                 sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
                 sender.Connect(ipEndPoint);
-
+                receiver = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                receiver.Connect(ipEndPoint);
                 WriteLine("Socket connected to "+ sender.RemoteEndPoint.ToString());
+                WriteLine("Socket connected to " + receiver.RemoteEndPoint.ToString());
             }
             catch (Exception err)
             {
@@ -98,7 +101,7 @@ namespace WindowsFormsApplication4
                 byte[] bytes = new byte[1024];
 
 
-                int bytesRec = sender.Receive(bytes);
+                int bytesRec = receiver.Receive(bytes);
 
                 if (bytesRec != 0)
                 {
@@ -185,7 +188,9 @@ namespace WindowsFormsApplication4
                         //MessageBox.Show(fwlog.raw);
                         fw_item = null;
                         fw_item = new ListViewItem(fwlog.Src_ip);
+                        fw_item.SubItems.Add(fwlog.Src_port);
                         fw_item.SubItems.Add(fwlog.Dest_ip);
+                        fw_item.SubItems.Add(fwlog.Dest_port);
                         fw_item.SubItems.Add(fwlog.raw); 
                         
                         parent.fw_log_listview.Invoke(new MainForm.DelegateFunction(fw_addItem), new object[] { fw_item });
@@ -226,7 +231,7 @@ namespace WindowsFormsApplication4
             byte[] msg = Encoding.ASCII.GetBytes(res.ToString());
 
 
-            MessageBox.Show(str);
+            //MessageBox.Show(str);
 
             switch (type)
             {
@@ -243,6 +248,10 @@ namespace WindowsFormsApplication4
             }
             int bytesSent = sender.Send(msg);
             Console.WriteLine("send data {0}", bytesSent);
+
+
+            byte[] bytes = new byte[1024];
+            int bytesRec = sender.Receive(bytes);
         }
 
         private void materialFlatButton1_Click(object sender, EventArgs e)

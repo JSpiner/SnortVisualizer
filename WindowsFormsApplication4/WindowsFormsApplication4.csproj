@@ -126,6 +126,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Ruleedit.resx">
+      <DependentUpon>Ruleedit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettingControl.resx">
       <DependentUpon>SettingControl.cs</DependentUpon>
     </EmbeddedResource>

@@ -41,6 +41,8 @@ namespace WindowsFormsApplication4
         public List<LogModel> logList;
         public static List<FLogModel> fLogList;
         public SocketForm socketManager;
+        public fw_Ruleedit fw_rule_edit;
+        public Ruleedit rule_edit;
 
         public MainForm()
         {
@@ -63,7 +65,7 @@ namespace WindowsFormsApplication4
 
             String str = "{ \"type\": 1, \"raw\": \"[**] [1:5:0] icmp in packet!! [**] \n[Priority: 0]\n 10/23-19:52:59.979665 192.168.1.2 -> 192.168.1.1 \n ICMP TTL:64 TOS:0x0 ID:60363 IpLen:20 DgmLen:84 DF\nType:8  Code:0  ID:23811   Seq:2  ECHO \" }";
             init();
-//            SerialTest t = new SerialTest();
+            //            SerialTest t = new SerialTest();
         }
 
 
@@ -80,7 +82,7 @@ namespace WindowsFormsApplication4
             listView1.Columns[4].Width = 300;
 
 
-            Panel p = panel1;
+            //Panel p = panel1;
 
             logList = new List<LogModel>();
             fLogList = new List<FLogModel>();
@@ -126,16 +128,10 @@ namespace WindowsFormsApplication4
             }
 */
 
-            for (int i = 0; i < 20; i++)
-            {
-                Label label = new Label();
-                label.Text = "asdfasdf";
-                p.Controls.Add(label);
-            }
 
 
 
-        }     
+        }
 
         public delegate void DelegateFunction(ListViewItem item);
 
@@ -143,7 +139,7 @@ namespace WindowsFormsApplication4
         {
             listView1.Items.Add(item);
         }
-        
+
 
         String base64Decode(String str)
         {
@@ -169,7 +165,9 @@ namespace WindowsFormsApplication4
             materialTabSelector1.Size = new Size(Width, materialTabSelector1.Size.Height);
             tabPage1.Size = new Size(Width, Height);
             tabPage2.Size = new Size(Width, Height);
-            tabPage3.Size = new Size(Width, Height);
+            //tabPage3.Size = new Size(Width, Height);
+            tabPage4.Size = new Size(Width, Height);
+            tabPage5.Size = new Size(Width, Height);
             listView1.Size = new Size(Width - 100, Height - 100);
         }
 
@@ -185,6 +183,11 @@ namespace WindowsFormsApplication4
             List<AnalData> portList = new List<AnalData>();
             List<AnalData> dateList = new List<AnalData>();
 
+
+            List<AnalData> fipList = new List<AnalData>();
+            List<AnalData> fportList = new List<AnalData>();
+            List<AnalData> fdateList = new List<AnalData>();
+            
             foreach (LogModel model in logList)
             {
 
@@ -204,9 +207,9 @@ namespace WindowsFormsApplication4
                     tmp.name = model.logBody.receiverIp;
                     ipList.Add(tmp);
                 }
-
+                //
                 sw = false;
-                foreach (AnalData data in ipList)
+                foreach (AnalData data in portList)
                 {
                     if (data.name == model.logBody.receiverPort)
                     {
@@ -221,13 +224,93 @@ namespace WindowsFormsApplication4
                     tmp.name = model.logBody.receiverPort;
                     portList.Add(tmp);
                 }
+                //
+
+                sw = false;
+                foreach (AnalData data in dateList)
+                {
+                    if (data.name == model.logBody.time.ToString())
+                    {
+                        sw = true;
+                        data.count++;
+                        break;
+                    }
+                }
+                if (!sw)
+                {
+                    AnalData tmp = new AnalData();
+                    tmp.name = model.logBody.time.ToString();
+                    portList.Add(tmp);
+                }
 
             }
 
 
+            foreach (FLogModel model in fLogList)
+            {
+
+                Boolean sw = false;
+                foreach (AnalData data in fipList)
+                {
+                    if (data.name == model.IN)
+                    {
+                        sw = true;
+                        data.count++;
+                        break;
+                    }
+                }
+                if (!sw)
+                {
+                    AnalData tmp = new AnalData();
+                    tmp.name = model.IN;
+                    fipList.Add(tmp);
+                }
+                //
+                sw = false;
+                foreach (AnalData data in fportList)
+                {
+                    if (data.name == model.OUT)
+                    {
+                        sw = true;
+                        data.count++;
+                        break;
+                    }
+                }
+                if (!sw)
+                {
+                    AnalData tmp = new AnalData();
+                    tmp.name = model.OUT;
+                    fportList.Add(tmp);
+                }
+                //
+
+                sw = false;
+                foreach (AnalData data in fdateList)
+                {
+                    if (data.name == model.time.ToString())
+                    {
+                        sw = true;
+                        data.count++;
+                        break;
+                    }
+                }
+                if (!sw)
+                {
+                    AnalData tmp = new AnalData();
+                    tmp.name = model.time.ToString();
+                    fportList.Add(tmp);
+                }
+
+            }
+
             initIPChart(ipList);
             initPortChart(portList);
             initDateList(dateList);
+
+            initfIPChart(ipList);
+            initfPortChart(portList);
+            initfDateList(dateList);
+
         }
 
         void initIPChart(List<AnalData> ipList)
@@ -246,8 +329,8 @@ namespace WindowsFormsApplication4
                 series.Points.Add(ipList[i].count);
             }
             chart1.Series.Add(series);
-//            chart2.Series.Add(series);
-//            chart3.Series.Add(series);
+            //            chart2.Series.Add(series);
+            //            chart3.Series.Add(series);
 
         }
 
@@ -287,7 +370,65 @@ namespace WindowsFormsApplication4
             }
             chart3.Series.Add(series);
 
-        } 
+        }
+        void initfIPChart(List<AnalData> ipList)
+        {
+
+            chart6.Series.Clear();
+
+            Series series = new Series();
+            series.ChartType = SeriesChartType.Line;
+
+            series.Name = "ipList";
+            for (int i = 0; i < 9; i++)
+            {
+                if (i >= ipList.Count) break;
+                series.Points.Add(ipList[i].count);
+                series.Points.Add(ipList[i].count);
+            }
+            chart6.Series.Add(series);
+            //            chart2.Series.Add(series);
+            //            chart3.Series.Add(series);
+
+        }
+
+        void initfPortChart(List<AnalData> portList)
+        {
+
+            chart5.Series.Clear();
+
+            Series series = new Series();
+            series.ChartType = SeriesChartType.Line;
+
+            series.Name = "portList";
+            for (int i = 0; i < 9; i++)
+            {
+                if (i >= portList.Count) break;
+                series.Points.Add(portList[i].count);
+                series.Points.Add(portList[i].count);
+            }
+            chart5.Series.Add(series);
+
+        }
+
+        void initfDateList(List<AnalData> dateList)
+        {
+
+            chart4.Series.Clear();
+
+            Series series = new Series();
+            series.ChartType = SeriesChartType.Line;
+
+            series.Name = "dateList";
+            for (int i = 0; i < 9; i++)
+            {
+                if (i >= dateList.Count) break;
+                series.Points.Add(dateList[i].count);
+                series.Points.Add(dateList[i].count);
+            }
+            chart4.Series.Add(series);
+
+        }
 
         class AnalData
         {
@@ -382,7 +523,7 @@ namespace WindowsFormsApplication4
 
         private void rule_add_bt_Click(object sender, EventArgs e)
         {
-            Ruleedit rule_edit = new Ruleedit();
+            rule_edit = new Ruleedit();
             rule_edit.main = this;
             rule_edit.listview = this.Rule_listView;
             rule_edit.Show();
@@ -390,17 +531,48 @@ namespace WindowsFormsApplication4
 
         private void Snort_button_Click(object sender, EventArgs e)
         {
-            String str = "/etc/init.d/snort restart";
+            String str = "/root/snort";
+            socketManager.sendMessage(2, str);
+
+            //str = "/root/snort_rule";
+            //socketManager.sendMessage(2, str);
+
+            str = "/etc/init.d/snort restart";
             socketManager.sendMessage(2, str);
         }
 
         private void fw_rule_add_bt_Click(object sender, EventArgs e)
         {
-            fw_Ruleedit fw_rule_edit = new fw_Ruleedit();
+            fw_rule_edit = new fw_Ruleedit();
             fw_rule_edit.main = this;
             fw_rule_edit.listview = this.fw_Rule_listView;
             fw_rule_edit.Show();
         }
+
+        private void rule_del_bt_Click(object sender, EventArgs e)
+        {
+            //String selected;
+            int selected = 0;
+            String str = "uci del snort_rule.@rule[" + selected.ToString() + "]";
+            selected = Rule_listView.FocusedItem.Index;
+            MessageBox.Show(selected.ToString());
+
+            socketManager.sendMessage(4, str);
+            Rule_listView.Items.RemoveAt(selected);
+            rule_edit.rule_set();
+        }
+
+        private void fw_rule_del_bt_Click(object sender, EventArgs e)
+        {
+            int selected = 0;
+            String str = "uci del firewall.@rule[" + selected.ToString() + "]";
+            selected = fw_Rule_listView.FocusedItem.Index;
+
+            socketManager.sendMessage(5, str);
+            fw_Rule_listView.Items.RemoveAt(selected);
+            fw_rule_edit.fw_rule_set();
+        }
+
 
     }
 }

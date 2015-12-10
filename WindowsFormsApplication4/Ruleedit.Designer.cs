@@ -53,7 +53,7 @@
             // 
             this.Action.AutoSize = true;
             this.Action.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Action.Location = new System.Drawing.Point(13, 12);
+            this.Action.Location = new System.Drawing.Point(13, 75);
             this.Action.Name = "Action";
             this.Action.Size = new System.Drawing.Size(51, 13);
             this.Action.TabIndex = 0;
@@ -63,7 +63,7 @@
             // 
             this.Protocol.AutoSize = true;
             this.Protocol.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Protocol.Location = new System.Drawing.Point(13, 43);
+            this.Protocol.Location = new System.Drawing.Point(13, 106);
             this.Protocol.Name = "Protocol";
             this.Protocol.Size = new System.Drawing.Size(67, 13);
             this.Protocol.TabIndex = 1;
@@ -73,7 +73,7 @@
             // 
             this.SrcIP.AutoSize = true;
             this.SrcIP.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.SrcIP.Location = new System.Drawing.Point(13, 74);
+            this.SrcIP.Location = new System.Drawing.Point(13, 137);
             this.SrcIP.Name = "SrcIP";
             this.SrcIP.Size = new System.Drawing.Size(46, 13);
             this.SrcIP.TabIndex = 2;
@@ -83,7 +83,7 @@
             // 
             this.SrcPort.AutoSize = true;
             this.SrcPort.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.SrcPort.Location = new System.Drawing.Point(13, 105);
+            this.SrcPort.Location = new System.Drawing.Point(13, 168);
             this.SrcPort.Name = "SrcPort";
             this.SrcPort.Size = new System.Drawing.Size(61, 13);
             this.SrcPort.TabIndex = 3;
@@ -93,7 +93,7 @@
             // 
             this.DestIP.AutoSize = true;
             this.DestIP.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.DestIP.Location = new System.Drawing.Point(13, 136);
+            this.DestIP.Location = new System.Drawing.Point(13, 199);
             this.DestIP.Name = "DestIP";
             this.DestIP.Size = new System.Drawing.Size(53, 13);
             this.DestIP.TabIndex = 4;
@@ -103,7 +103,7 @@
             // 
             this.DestPort.AutoSize = true;
             this.DestPort.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.DestPort.Location = new System.Drawing.Point(13, 167);
+            this.DestPort.Location = new System.Drawing.Point(13, 230);
             this.DestPort.Name = "DestPort";
             this.DestPort.Size = new System.Drawing.Size(68, 13);
             this.DestPort.TabIndex = 5;
@@ -113,7 +113,7 @@
             // 
             this.Msg.AutoSize = true;
             this.Msg.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Msg.Location = new System.Drawing.Point(13, 198);
+            this.Msg.Location = new System.Drawing.Point(13, 261);
             this.Msg.Name = "Msg";
             this.Msg.Size = new System.Drawing.Size(37, 13);
             this.Msg.TabIndex = 6;
@@ -123,7 +123,7 @@
             // 
             this.Content.AutoSize = true;
             this.Content.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Content.Location = new System.Drawing.Point(13, 229);
+            this.Content.Location = new System.Drawing.Point(13, 292);
             this.Content.Name = "Content";
             this.Content.Size = new System.Drawing.Size(61, 13);
             this.Content.TabIndex = 7;
@@ -133,7 +133,7 @@
             // 
             this.Sid.AutoSize = true;
             this.Sid.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Sid.Location = new System.Drawing.Point(13, 260);
+            this.Sid.Location = new System.Drawing.Point(13, 323);
             this.Sid.Name = "Sid";
             this.Sid.Size = new System.Drawing.Size(30, 13);
             this.Sid.TabIndex = 8;
@@ -141,74 +141,74 @@
             // 
             // tb_Action
             // 
-            this.tb_Action.Location = new System.Drawing.Point(93, 9);
+            this.tb_Action.Location = new System.Drawing.Point(93, 72);
             this.tb_Action.Name = "tb_Action";
             this.tb_Action.Size = new System.Drawing.Size(190, 21);
             this.tb_Action.TabIndex = 9;
             // 
             // tb_Protocol
             // 
-            this.tb_Protocol.Location = new System.Drawing.Point(93, 40);
+            this.tb_Protocol.Location = new System.Drawing.Point(93, 103);
             this.tb_Protocol.Name = "tb_Protocol";
             this.tb_Protocol.Size = new System.Drawing.Size(190, 21);
             this.tb_Protocol.TabIndex = 10;
             // 
             // tb_SrcIP
             // 
-            this.tb_SrcIP.Location = new System.Drawing.Point(93, 71);
+            this.tb_SrcIP.Location = new System.Drawing.Point(93, 134);
             this.tb_SrcIP.Name = "tb_SrcIP";
             this.tb_SrcIP.Size = new System.Drawing.Size(190, 21);
             this.tb_SrcIP.TabIndex = 11;
             // 
             // tb_SrcPort
             // 
-            this.tb_SrcPort.Location = new System.Drawing.Point(93, 102);
+            this.tb_SrcPort.Location = new System.Drawing.Point(93, 165);
             this.tb_SrcPort.Name = "tb_SrcPort";
             this.tb_SrcPort.Size = new System.Drawing.Size(190, 21);
             this.tb_SrcPort.TabIndex = 12;
             // 
             // tb_DestIP
             // 
-            this.tb_DestIP.Location = new System.Drawing.Point(93, 133);
+            this.tb_DestIP.Location = new System.Drawing.Point(93, 196);
             this.tb_DestIP.Name = "tb_DestIP";
             this.tb_DestIP.Size = new System.Drawing.Size(190, 21);
             this.tb_DestIP.TabIndex = 13;
             // 
             // tb_DestPort
             // 
-            this.tb_DestPort.Location = new System.Drawing.Point(93, 166);
+            this.tb_DestPort.Location = new System.Drawing.Point(93, 229);
             this.tb_DestPort.Name = "tb_DestPort";
             this.tb_DestPort.Size = new System.Drawing.Size(190, 21);
             this.tb_DestPort.TabIndex = 14;
             // 
             // tb_Msg
             // 
-            this.tb_Msg.Location = new System.Drawing.Point(93, 195);
+            this.tb_Msg.Location = new System.Drawing.Point(93, 258);
             this.tb_Msg.Name = "tb_Msg";
             this.tb_Msg.Size = new System.Drawing.Size(190, 21);
             this.tb_Msg.TabIndex = 15;
             // 
             // tb_Content
             // 
-            this.tb_Content.Location = new System.Drawing.Point(93, 226);
+            this.tb_Content.Location = new System.Drawing.Point(93, 289);
             this.tb_Content.Name = "tb_Content";
             this.tb_Content.Size = new System.Drawing.Size(190, 21);
             this.tb_Content.TabIndex = 16;
             // 
             // tb_Sid
             // 
-            this.tb_Sid.Location = new System.Drawing.Point(93, 257);
+            this.tb_Sid.Location = new System.Drawing.Point(93, 320);
             this.tb_Sid.Name = "tb_Sid";
             this.tb_Sid.Size = new System.Drawing.Size(190, 21);
             this.tb_Sid.TabIndex = 17;
             // 
             // register_bt
             // 
-            this.register_bt.Location = new System.Drawing.Point(208, 284);
+            this.register_bt.Location = new System.Drawing.Point(208, 347);
             this.register_bt.Name = "register_bt";
             this.register_bt.Size = new System.Drawing.Size(75, 23);
             this.register_bt.TabIndex = 18;
-            this.register_bt.Text = "button1";
+            this.register_bt.Text = "Register";
             this.register_bt.UseVisualStyleBackColor = true;
             this.register_bt.Click += new System.EventHandler(this.register_bt_Click);
             // 
@@ -216,7 +216,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 316);
+            this.ClientSize = new System.Drawing.Size(292, 379);
             this.Controls.Add(this.register_bt);
             this.Controls.Add(this.tb_Sid);
             this.Controls.Add(this.tb_Content);
